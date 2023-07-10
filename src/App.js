@@ -37,7 +37,7 @@ function App() {
       <main>
         <SpecialsSection />
         <section>
-          <h2>Testimonial</h2>
+          <h2>Testimonials</h2>
         </section>
         <section>
           <h2>Little lemon</h2>
