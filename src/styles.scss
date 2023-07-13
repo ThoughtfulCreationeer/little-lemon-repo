@@ -1,0 +1,269 @@
+// ######################################## //
+// ########## Projects variables ########## //
+// ######################################## //
+
+/*Color styles*/
+$LittleLemonGreen: #495E57;
+$LittleLemonYellow: #F4CE14;
+$LittleLemonPeach: #EE9972;
+$LittleLemonBeige: #FBDABB;
+$HighlightWhite: #EDEFEE;
+$HighlightBlack: #333333;
+
+/*Text styles*/
+@font-face {
+    font-family: 'Karla';
+    src: url('./fonts/Karla-VariableFont_wght.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Markazi Text';
+    src: url('./fonts/MarkaziText-VariableFont_wght.ttf') format('truetype');
+}
+
+:root {
+    --my-chosen-headline-size: calc(clamp(3rem, 1rem + 10vw, 6rem))
+}
+
+h1 {
+    font-family: 'Markazi Text';
+    font-size: var(--my-chosen-headline-size);
+    line-height: 50%;
+}
+
+h2 {
+    font-family: 'Markazi Text';
+    font-size: calc(var(--my-chosen-headline-size)*0.6);
+}
+
+h3 {
+    font-family: 'Markazi Text';
+    font-size: calc(var(--my-chosen-headline-size)*0.4);
+}
+
+p {
+    font-family: 'Karla';
+}
+
+/* Content styles */
+$BigCornerRadius: 16px;
+$SmallCornerRadius: 8px;
+$LowerGeneralPageMinColumnRequirement: 800px;
+$HigherGeneralPageMinColumnRequirement: 1232px;
+$HigherGeneralContentMaxWidth: 1200px;
+$GeneralContainerMarginSize: 0 16px 0 16px;
+
+
+// ##################################### //
+// ########## Project Styling ########## //
+// ##################################### //
+
+/* This is where the styling for the headersection begins */
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: $GeneralContainerMarginSize;
+    font-family: 'Karla', sans-serif;
+    justify-content: center;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+nav img {
+    width: calc(clamp( 160px, 160px + (1vw *5), 240px));;
+}
+
+
+nav ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    list-style-type: none;
+    justify-content: center;
+    padding: 0 24px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: $LittleLemonGreen;
+    font-size: calc(clamp( 12px, 1em + (1vw *0.5), 24px));
+}
+
+@media (min-width: $LowerGeneralPageMinColumnRequirement) {
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    nav ul{
+        gap: 1.5em;
+        padding: 0;
+    }
+}
+
+@media (min-width: 1080px) {
+    nav {
+        font-weight: medium;
+    }
+}
+
+@media (min-width: $HigherGeneralPageMinColumnRequirement) {
+    nav {
+        max-width: $HigherGeneralContentMaxWidth;
+        margin: 0 auto;
+    }
+}
+
+/* This is where the hero section goes */
+
+.hero-section {
+    background-color: $LittleLemonGreen;
+    height: 720px;
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+    color: $HighlightWhite;
+}
+
+.hero-content {
+    margin: $GeneralContainerMarginSize;
+    justify-content: space-between;
+}
+
+
+.page-headline h1, .page-headline h2 {
+    margin: 0;
+    padding: 0;
+}
+
+.opening-text{
+    margin: 1em 0 0 0;
+}
+
+.intro-text button {
+    display: block;
+    margin: 1.5em auto;
+    background-color: $LittleLemonYellow;
+    padding: 20px 32px 20px 32px;
+    border-radius: $BigCornerRadius;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: $HighlightBlack;
+    border: none;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: $BigCornerRadius;
+}
+
+@media (min-width: $LowerGeneralPageMinColumnRequirement) {
+    .hero-section {
+        height: 352px;
+    }
+    .hero-content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        margin: $GeneralContainerMarginSize;
+    }
+    .intro-text {
+        flex: 0 0 60%;
+        margin-bottom: 10px;
+    }
+    .opening-text{
+        margin: 2em 3em 0 0;
+    }
+
+    .intro-text button {
+        margin: 3em 3em 0 0;
+    }
+
+    .image-container {
+        flex: 0 0 40%;
+    }
+    .image-container img {
+        max-width: 100%;
+        height: 500px;
+        object-fit: cover;
+    }
+}
+
+@media (min-width: $HigherGeneralPageMinColumnRequirement) {
+    .hero-content {
+        max-width: $HigherGeneralContentMaxWidth;
+        margin: 0 auto;
+    }
+}
+
+/* This is where the styling for the SpecialsSection goes */
+
+.specials-section {
+    display: grid;
+    height: 50rem;
+    padding: 92px 0 92px 0;
+    justify-content: space-between;
+    margin: $GeneralContainerMarginSize;
+}
+
+@media (min-width: $LowerGeneralPageMinColumnRequirement) {
+    .specials-section {
+        height: 40rem;
+        padding: 64px 0 64px 0;
+    }
+}
+
+@media (min-width: $HigherGeneralPageMinColumnRequirement) {
+    .specials-section {
+        max-width: $HigherGeneralContentMaxWidth;
+        margin: 0 auto;
+    }
+}
+
+/* This is where the styling for the Testimonials Section goes */
+
+.testimonials-section {
+    display: grid;
+    background-color: $LittleLemonBeige;
+    height: 30rem;
+    padding: 52px 0 52px 0;
+    justify-content: center;
+}
+
+/* This is where the styling for the Final Section goes */
+
+.final-section {
+    display: flex;
+    flex-wrap: wrap;
+    height: 50rem;
+    padding: 4rem 0 0;
+}
+
+.final-section h2, .final-section h3 {
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: $LowerGeneralPageMinColumnRequirement){
+    .final-section{
+        margin: $GeneralContainerMarginSize;
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: $HigherGeneralPageMinColumnRequirement){
+    .final-section{
+        max-width: $HigherGeneralContentMaxWidth;
+        margin: 0 auto;
+    }
+}
+
+/* This is where the styling for the footer goes */
+
+footer {
+    background-color: $LittleLemonGreen;
+    height: 10rem;
+}

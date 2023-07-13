@@ -1,5 +1,6 @@
-import './App.css';
+import './styles.scss';
 import SpecialsSection from './SpecialsSection';
+import Testimonials from './Testimonials'
 
 function App() {
   return (
@@ -30,17 +31,34 @@ function App() {
             </li>
           </ul>
         </nav>
-        <h1> Little lemon </h1>
-        <h2> Chicago </h2>
-        <p>This an awesome text giving insight into what fantastic food is being made at Little Lemon resturant</p>
+        <section className='hero-section'>
+          <div className='hero-content'>
+            <div className='intro-text'>
+              <div className='page-headline'>
+                <h1> Little Lemon </h1>
+                <h2> Chicago </h2>
+              </div>
+              <p className='opening-text'>Step into our vibrant haven, where the aroma of olive oil and the gentle murmur of our welcoming team brings the warmth of Mediterranean sunshine straight to your table. Little Lemon is more than just a Greek restaurant, it's a celebration of Greece's rich culinary heritage wrapped in a zestful embrace. </p>
+              <button> Reserve a table </button>
+            </div>
+            <div className='image-container'>
+              <img src="/restaurant-chef-B.jpg" alt="Picture of one of our chefs finalizing a mean"/>
+            </div>
+          </div>
+        </section>
       </header>
       <main>
-        <SpecialsSection />
         <section>
-          <h2>Testimonials</h2>
+          <SpecialsSection />
         </section>
         <section>
-          <h2>Little lemon</h2>
+          <Testimonials />
+        </section>
+        <section className='final-section'>
+          <div>
+            <h2>Little Lemon</h2>
+            <h3>Chicago</h3>
+          </div>
         </section>
       </main>
       <footer>

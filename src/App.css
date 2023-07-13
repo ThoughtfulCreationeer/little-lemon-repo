@@ -37,6 +37,10 @@
   }
 }
 
-.specials-section {
-  background-color: #FBDABB;
+.hero-section {
+  display: flexbox;
+  background-color: #495E57;
+  color: white;
 }
+
+
