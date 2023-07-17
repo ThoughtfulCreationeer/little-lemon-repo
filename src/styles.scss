@@ -10,6 +10,9 @@ $LittleLemonBeige: #FBDABB;
 $HighlightWhite: #EDEFEE;
 $HighlightBlack: #333333;
 
+/*Shadow styles*/
+$PrimaryShadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
+
 /*Text styles*/
 @font-face {
     font-family: 'Karla';
@@ -22,7 +25,8 @@ $HighlightBlack: #333333;
 }
 
 :root {
-    --my-chosen-headline-size: calc(clamp(3rem, 1rem + 10vw, 6rem))
+    --my-chosen-headline-size: calc(clamp(3rem, 10vw, 6rem));
+    --my-chosen-cardhead-size: clamp(1.5rem, calc(10vw*0.4), calc(6rem*0.3));
 }
 
 h1 {
@@ -41,6 +45,11 @@ h3 {
     font-size: calc(var(--my-chosen-headline-size)*0.4);
 }
 
+h4 {
+    font-family: 'Markazi Text';
+    font-size: var(--my-chosen-cardhead-size);
+}
+
 p {
     font-family: 'Karla';
 }
@@ -53,6 +62,15 @@ $HigherGeneralPageMinColumnRequirement: 1232px;
 $HigherGeneralContentMaxWidth: 1200px;
 $GeneralContainerMarginSize: 0 16px 0 16px;
 
+button {
+    display: block;
+    margin: 1.5em auto;
+    padding: 20px 32px 20px 32px;
+    border-radius: $BigCornerRadius;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+}
 
 // ##################################### //
 // ########## Project Styling ########## //
@@ -69,37 +87,41 @@ nav {
     justify-content: center;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-}
-
-nav img {
-    width: calc(clamp( 160px, 160px + (1vw *5), 240px));;
-}
 
 
-nav ul{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-    list-style-type: none;
-    justify-content: center;
-    padding: 0 24px;
+    img {
+        width: calc(clamp( 160px, 160px + (1vw *5), 240px));;
+    }
+
+
+    ul{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+        list-style-type: none;
+        justify-content: center;
+        padding: 0 24px;
+
+        li a {
+            text-decoration: none;
+            color: $LittleLemonGreen;
+            font-size: calc(clamp( 12px, 1em + (1vw *0.5), 24px));
+        }
+    }
 }
 
-nav ul li a {
-    text-decoration: none;
-    color: $LittleLemonGreen;
-    font-size: calc(clamp( 12px, 1em + (1vw *0.5), 24px));
-}
+
 
 @media (min-width: $LowerGeneralPageMinColumnRequirement) {
     nav {
         display: flex;
         align-items: center;
         justify-content: space-between;
-    }
-    nav ul{
-        gap: 1.5em;
-        padding: 0;
+
+        ul{
+            gap: 1.5em;
+            padding: 0;
+        }
     }
 }
 
@@ -141,16 +163,9 @@ nav ul li a {
     margin: 1em 0 0 0;
 }
 
-.intro-text button {
-    display: block;
-    margin: 1.5em auto;
+#Yellow-Button {
     background-color: $LittleLemonYellow;
-    padding: 20px 32px 20px 32px;
-    border-radius: $BigCornerRadius;
-    font-size: 1.2em;
-    font-weight: bold;
     color: $HighlightBlack;
-    border: none;
 }
 
 .image-container img {
@@ -158,37 +173,43 @@ nav ul li a {
     height: 500px;
     object-fit: cover;
     border-radius: $BigCornerRadius;
+    box-shadow: $PrimaryShadow;
 }
 
 @media (min-width: $LowerGeneralPageMinColumnRequirement) {
     .hero-section {
         height: 352px;
     }
+
     .hero-content {
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
         margin: $GeneralContainerMarginSize;
     }
+
     .intro-text {
         flex: 0 0 60%;
         margin-bottom: 10px;
-    }
-    .opening-text{
-        margin: 2em 3em 0 0;
-    }
 
-    .intro-text button {
-        margin: 3em 3em 0 0;
+        p {
+            margin: 2em 3em 0 0;
+        }
+
+        button {
+            margin: 3em 3em 0 0;
+        }
+
     }
 
     .image-container {
         flex: 0 0 40%;
-    }
-    .image-container img {
-        max-width: 100%;
-        height: 500px;
-        object-fit: cover;
+
+        img {
+            max-width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
     }
 }
 
@@ -202,17 +223,104 @@ nav ul li a {
 /* This is where the styling for the SpecialsSection goes */
 
 .specials-section {
-    display: grid;
-    height: 50rem;
-    padding: 92px 0 92px 0;
+    display: flex;
+    flex-direction: column;
+    padding: 92px 0;
     justify-content: space-between;
     margin: $GeneralContainerMarginSize;
+
+    h2{
+        margin-bottom: 32px;
+    }
+
+    button {
+        background-color: $HighlightBlack;
+        color: $HighlightWhite;
+        margin: 40px auto;
+    }
 }
+
+.Card-Container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+
+    .Card {
+        width: 100%;
+        background-color: $HighlightWhite;
+        border-radius: $BigCornerRadius;
+        box-shadow: $PrimaryShadow;
+        overflow: hidden;
+
+        img {
+            width: fill;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .Card-WS {
+            padding: 0 16px 16px 16px;
+            display: flex;
+            flex-direction: column;
+
+            .Name_Price-Column {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-align: center;
+
+                h4{
+                    margin: 4px 0 0 0;
+                    padding: 0;
+                }
+
+                p {
+                    color: $LittleLemonPeach;
+                    font-size: calc(var(--my-chosen-cardhead-size)*0.7);
+                    margin: 4px 0 0 0;
+                    padding: 0;
+                    font-weight: bold;
+                }
+            }
+
+            button {
+                display: flex;
+                align-items: center;
+                font-size: 1em;
+                padding: 8px 16px;
+                background-color: $HighlightWhite;
+                color: $HighlightBlack;
+                border: 2px solid $HighlightBlack;
+                margin: auto auto 0 0;
+
+                img{
+                    max-width: 1.5em;
+                    height: auto;
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}
+
 
 @media (min-width: $LowerGeneralPageMinColumnRequirement) {
     .specials-section {
-        height: 40rem;
-        padding: 64px 0 64px 0;
+        padding: 64px 0;
+
+        .Card-Container {
+            flex-direction: row;
+
+            .Card {
+                width: 33.3%;
+
+                .Card-WS {
+                    height: 14em;
+                }
+            }
+        }
     }
 }
 
@@ -226,40 +334,120 @@ nav ul li a {
 /* This is where the styling for the Testimonials Section goes */
 
 .testimonials-section {
-    display: grid;
     background-color: $LittleLemonBeige;
-    height: 30rem;
-    padding: 52px 0 52px 0;
+    height: auto;
+    padding: 64px 0;
     justify-content: center;
 }
 
-/* This is where the styling for the Final Section goes */
-
-.final-section {
-    display: flex;
-    flex-wrap: wrap;
-    height: 50rem;
-    padding: 4rem 0 0;
+.testimonials-section h2{
+    margin: $GeneralContainerMarginSize;
+    margin-bottom: 32px;
 }
 
-.final-section h2, .final-section h3 {
-    margin: 0;
-    padding: 0;
+.T-Card-Container{
+    margin: $GeneralContainerMarginSize;
+    display: flex;
+    flex-direction: column ;
+    gap: 16px;
+}
+
+.T-Card{
+    border-radius: $BigCornerRadius;
+    background-color: $LittleLemonBeige;
+    box-shadow: $PrimaryShadow;
+    padding: 24px;
+
+    .Picture-n-Name{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+            width: 66%;
+            aspect-ratio: 1/1;
+            border-radius: 100%;
+            border: 2px solid $HighlightBlack;
+            margin-bottom: 8px;
+        }
+
+        div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            p {
+                margin: 0;
+
+                strong{
+                    font-size: 1.5em;
+                    color: $HighlightBlack;
+                }
+
+                b{
+                    color: #555555;
+                }
+            }
+        }
+    }
+}
+
+.Stars{
+    display: flex;
+    margin: auto auto 0 auto;
+    /*background-color: #495E57;*/
 }
 
 @media (min-width: $LowerGeneralPageMinColumnRequirement){
-    .final-section{
-        margin: $GeneralContainerMarginSize;
-        justify-content: space-between;
+    .T-Card-Container{
+        flex-direction: row;
+    }
+
+    .T-Card{
+        width: 25%;
     }
 }
 
 @media (min-width: $HigherGeneralPageMinColumnRequirement){
-    .final-section{
+    .testimonials-section h2{
         max-width: $HigherGeneralContentMaxWidth;
+        margin-left:  auto;
+        margin-right: auto;
+    }
+
+    .T-Card-Container{
+        max-width: $HigherGeneralContentMaxWidth;
+        margin: 0 auto 32px auto;
+    }
+}
+/* This is where the styling for the Final Section goes */
+
+.final-section {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem 0 0;
+    align-items: center;
+    gap: 32px;
+    padding: 64px 16px 32px;
+
+    img{
+        width: 200px;
+    }
+}
+
+.final-little-lemon-location h2, .final-little-lemon-location h3 {
+    margin: 0;
+    padding: 0;
+}
+
+
+@media (min-width: $LowerGeneralPageMinColumnRequirement){
+    .final-section{
+        max-width: 800px;
         margin: 0 auto;
     }
 }
+
 
 /* This is where the styling for the footer goes */
 

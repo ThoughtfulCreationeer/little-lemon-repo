@@ -1,36 +1,14 @@
 import './styles.scss';
+import Navbar from './Navbar';
 import SpecialsSection from './SpecialsSection';
 import Testimonials from './Testimonials'
+import Footer from './Footer';
 
 function App() {
   return (
     <>
       <header>
-        <nav>
-          <a href="home">
-            <img src="/logo-n-text.png" alt="Little Lomon's logo"/>
-          </a>
-          <ul>
-            <li>
-              <a href=''>Home</a>
-            </li>
-            <li>
-              <a href=''>About</a>
-            </li>
-            <li>
-              <a href=''>Menu</a>
-            </li>
-            <li>
-              <a href=''>Reservations</a>
-            </li>
-            <li>
-              <a href=''>Order Online</a>
-            </li>
-            <li>
-              <a href=''>Login</a>
-            </li>
-          </ul>
-        </nav>
+        <Navbar/>
         <section className='hero-section'>
           <div className='hero-content'>
             <div className='intro-text'>
@@ -38,8 +16,8 @@ function App() {
                 <h1> Little Lemon </h1>
                 <h2> Chicago </h2>
               </div>
-              <p className='opening-text'>Step into our vibrant haven, where the aroma of olive oil and the gentle murmur of our welcoming team brings the warmth of Mediterranean sunshine straight to your table. Little Lemon is more than just a Greek restaurant, it's a celebration of Greece's rich culinary heritage wrapped in a zestful embrace. </p>
-              <button> Reserve a table </button>
+              <p>Step into our vibrant haven, where the aroma of olive oil and the gentle murmur of our welcoming team brings the warmth of Mediterranean sunshine straight to your table. Little Lemon is more than just a Greek restaurant, it's a celebration of Greece's rich culinary heritage wrapped in a zestful embrace. </p>
+              <button id='Yellow-Button'> Reserve a table </button>
             </div>
             <div className='image-container'>
               <img src="/restaurant-chef-B.jpg" alt="Picture of one of our chefs finalizing a mean"/>
@@ -48,21 +26,28 @@ function App() {
         </section>
       </header>
       <main>
-        <section>
+        <section className="specials-section">
+          <h2>Specials</h2>
           <SpecialsSection />
+          <button>See full menu</button>
         </section>
-        <section>
-          <Testimonials />
+        <section className="testimonials-section">
+            <h2>Testimonials</h2>
+            <Testimonials />
         </section>
         <section className='final-section'>
-          <div>
-            <h2>Little Lemon</h2>
-            <h3>Chicago</h3>
+          <img src='/Little-Lemon-in-a-square.png' alt='Little Lemon Trademark Square'/>
+          <div className='final-text-container'>
+            <div className='final-little-lemon-location'>
+              <h2>Little Lemon</h2>
+              <h3>Chicago</h3>
+            </div>
+            <p>Where food is a celebration, stories are shared, and everyone is family. Let us fill your plates with warmth, your glasses with cheer, and your heart with the true spirit of Greek hospitality. Here, every moment is a memory waiting to be savored.</p>
           </div>
+          <button id='Yellow-Button'> Reserve a table </button>
         </section>
       </main>
-      <footer>
-      </footer>
+      <Footer/>
     </>
   );
 }
