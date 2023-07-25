@@ -45,7 +45,7 @@ function Testimonials() {
                         </div>
                     </div>
                     <p><i>"{card.coment}"</i></p>
-                    <img className="Stars" src = "./Testimonial-Pictures/stars.svg"/>
+                    <img className="Stars" src = "./Testimonial-Pictures/stars.png"/>
                 </div>
             ))}
         </div>

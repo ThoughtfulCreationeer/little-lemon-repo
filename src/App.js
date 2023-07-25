@@ -20,7 +20,7 @@ function App() {
               <button id='Yellow-Button'> Reserve a table </button>
             </div>
             <div className='image-container'>
-              <img src="/restaurant-chef-B.jpg" alt="Picture of one of our chefs finalizing a mean"/>
+              <img src="/restaurant-chef-B.jpg" alt=" One of our chefs finalizing a mean"/>
             </div>
           </div>
         </section>

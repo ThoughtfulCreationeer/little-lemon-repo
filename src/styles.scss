@@ -54,13 +54,18 @@ p {
     font-family: 'Karla';
 }
 
-/* Content styles */
+li{
+    font-family: 'Karla';
+}
+
+/* v styles */
 $BigCornerRadius: 16px;
 $SmallCornerRadius: 8px;
 $LowerGeneralPageMinColumnRequirement: 800px;
 $HigherGeneralPageMinColumnRequirement: 1232px;
-$HigherGeneralContentMaxWidth: 1200px;
+$HigherGeneralvMaxWidth: 1200px;
 $GeneralContainerMarginSize: 0 16px 0 16px;
+$GeneralStripeSpacing: 64px 16px;
 
 button {
     display: block;
@@ -72,9 +77,11 @@ button {
     border: none;
 }
 
+
 // ##################################### //
 // ########## Project Styling ########## //
 // ##################################### //
+
 
 /* This is where the styling for the headersection begins */
 
@@ -87,7 +94,6 @@ nav {
     justify-content: center;
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-
 
     img {
         width: calc(clamp( 160px, 160px + (1vw *5), 240px));;
@@ -110,8 +116,6 @@ nav {
     }
 }
 
-
-
 @media (min-width: $LowerGeneralPageMinColumnRequirement) {
     nav {
         display: flex;
@@ -133,10 +137,11 @@ nav {
 
 @media (min-width: $HigherGeneralPageMinColumnRequirement) {
     nav {
-        max-width: $HigherGeneralContentMaxWidth;
+        max-width: $HigherGeneralvMaxWidth;
         margin: 0 auto;
     }
 }
+
 
 /* This is where the hero section goes */
 
@@ -215,10 +220,11 @@ nav {
 
 @media (min-width: $HigherGeneralPageMinColumnRequirement) {
     .hero-content {
-        max-width: $HigherGeneralContentMaxWidth;
+        max-width: $HigherGeneralvMaxWidth;
         margin: 0 auto;
     }
 }
+
 
 /* This is where the styling for the SpecialsSection goes */
 
@@ -255,7 +261,7 @@ nav {
         overflow: hidden;
 
         img {
-            width: fill;
+            width: 100%;
             height: 200px;
             object-fit: cover;
         }
@@ -326,17 +332,20 @@ nav {
 
 @media (min-width: $HigherGeneralPageMinColumnRequirement) {
     .specials-section {
-        max-width: $HigherGeneralContentMaxWidth;
+        max-width: $HigherGeneralvMaxWidth;
         margin: 0 auto;
     }
 }
+
 
 /* This is where the styling for the Testimonials Section goes */
 
 .testimonials-section {
     background-color: $LittleLemonBeige;
     height: auto;
-    padding: 64px 0;
+    padding: $GeneralStripeSpacing;
+    padding-left: 0;
+    padding-right: 0;
     justify-content: center;
 }
 
@@ -347,12 +356,14 @@ nav {
 
 .T-Card-Container{
     margin: $GeneralContainerMarginSize;
-    display: flex;
-    flex-direction: column ;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 16px;
 }
 
 .T-Card{
+    display: flex;
+    flex-direction: column;
     border-radius: $BigCornerRadius;
     background-color: $LittleLemonBeige;
     box-shadow: $PrimaryShadow;
@@ -393,51 +404,58 @@ nav {
 }
 
 .Stars{
+    width: 80%;
     display: flex;
     margin: auto auto 0 auto;
-    /*background-color: #495E57;*/
 }
 
-@media (min-width: $LowerGeneralPageMinColumnRequirement){
+@media (min-width: 480px){
     .T-Card-Container{
-        flex-direction: row;
+        grid-template-columns: repeat(2, 1fr);
     }
+}
 
-    .T-Card{
-        width: 25%;
+@media (min-width: 900px){
+    .T-Card-Container{
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 
 @media (min-width: $HigherGeneralPageMinColumnRequirement){
     .testimonials-section h2{
-        max-width: $HigherGeneralContentMaxWidth;
+        max-width: $HigherGeneralvMaxWidth;
         margin-left:  auto;
         margin-right: auto;
     }
 
     .T-Card-Container{
-        max-width: $HigherGeneralContentMaxWidth;
+        max-width: $HigherGeneralvMaxWidth;
         margin: 0 auto 32px auto;
     }
 }
+
+
 /* This is where the styling for the Final Section goes */
 
 .final-section {
     display: flex;
     flex-direction: column;
-    padding: 4rem 0 0;
     align-items: center;
-    gap: 32px;
-    padding: 64px 16px 32px;
+    gap: 48px;
+    padding: $GeneralStripeSpacing;
 
     img{
         width: 200px;
+    }
+    #Yellow-Button{
+        margin: 0 auto;
     }
 }
 
 .final-little-lemon-location h2, .final-little-lemon-location h3 {
     margin: 0;
     padding: 0;
+    line-height: 80%;
 }
 
 
@@ -453,5 +471,209 @@ nav {
 
 footer {
     background-color: $LittleLemonGreen;
-    height: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: $GeneralStripeSpacing;
+    gap: 64px;
+
+    .Logo-n-subscriptionform{
+        display: flex;
+        align-items: center;
+        gap: 80px;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        img{
+            width: 160px;
+        }
+    }
+    .Nav-n-Contact{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+
+        ul{
+            display: flex;
+            list-style-type: none;
+            font-weight: medium;
+            margin: 0;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            li a{
+                text-decoration: none;
+                color: white;
+            }
+        }
+
+        .Footer-Navigation{
+            padding: 0;
+            font-size: clamp(24px, calc(5vw), 32px);
+            /*font-size: 32px;*/
+
+            li{
+                padding: 0 40px;
+            }
+        }
+
+        .Footer-Contact-Info{
+            padding: 0;
+            font-size: clamp(16px, calc(4vw), 24px);
+
+            li{
+                padding: 0 24px;
+            }
+        }
+    }
+
+    .SoMe-Container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 32px;
+        grid-auto-flow: dense;
+    }
+
+    .Powered-by-container{
+        display: flex;
+        gap: 1em;
+        align-items: center;
+        color: white;
+
+        a{
+            font: 'Karla';
+
+            img{
+                height: 40px;
+            }
+        }
+    }
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Karla';
+    gap: 16px;
+    color: white;
+
+    .Subscription-label{
+        font-size: 24px;
+        font-weight: medium;
+    }
+
+    div{
+        display: flex;
+        height: 48px;
+        width: 320px;
+
+        input{
+            display: flex;
+            width: 100%;
+            background-color: transparent;
+            border: solid 2px white;
+            border-radius: 8px 0 0 8px;
+            color: white;
+            font-weight: 200;
+            padding: 8px;
+        }
+
+        input::placeholder{
+            color: white;
+            font-family: 'Karla';
+        }
+
+        input:focus{
+            outline: none;
+            box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+        }
+
+
+        button{
+            background-color: white;
+            border: 2px solid white;
+            border-left: 0;
+            display: flex;
+            margin: 0;
+            padding: auto 16px;
+            align-items: center;
+            border-radius: 0px 8px 8px 0px;
+        }
+        button:hover{
+            background-color: #ccc;
+            cursor: pointer;
+        }
+    }
+
+    .checkbox{
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        #checkbox{
+            width: 28px;
+            height: 28px;
+            margin: 0;
+        }
+
+        .custom-checkbox{
+            position: absolute;
+            background-color: $LittleLemonGreen;
+            border: 2px solid white;
+            border-radius: 4px;
+            width: 24px;
+            height: 24px;
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .custom-checkbox:hover{
+            background-color: #CCCCCC;
+        }
+
+        #checkbox:checked ~ .custom-checkbox{
+            background-color: transparent;
+        }
+
+    }
+    .TCE{
+        display: flex;
+        flex-direction: column;
+
+        .Terms-n-conditions{
+            display: flex;
+            gap: 2px;
+
+            p{
+                margin: 0;
+                padding: 0;
+                font-size: 12px;
+            }
+
+            a{
+                margin: 0;
+                padding: 0;
+                font-size: 12px;
+                text-decoration: underline;
+            }
+
+            a:hover{
+                cursor: pointer;
+            }
+        }
+        .error-message{
+            font-family: 'karla';
+            font-weight: 400;
+            color: #FF2700;
+            margin: 0;
+        }
+    }
+}
+
+@media (min-width: 400px) {
+    footer .SoMe-Container{
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 48px;
+    }
 }
