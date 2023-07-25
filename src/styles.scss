@@ -77,11 +77,16 @@ button {
     border: none;
 }
 
+button:hover{
+    cursor: pointer;
+}
+
 
 // ##################################### //
 // ########## Project Styling ########## //
 // ##################################### //
 
+// ##  Home Page, Nav and Footer  ## //
 
 /* This is where the styling for the headersection begins */
 
@@ -112,6 +117,11 @@ nav {
             text-decoration: none;
             color: $LittleLemonGreen;
             font-size: calc(clamp( 12px, 1em + (1vw *0.5), 24px));
+            font-weight: 500;
+        }
+
+        li a:hover{
+            color: #ccc;
         }
     }
 }
@@ -171,6 +181,14 @@ nav {
 #Yellow-Button {
     background-color: $LittleLemonYellow;
     color: $HighlightBlack;
+    border: 2px solid $LittleLemonYellow;
+
+}
+
+#Yellow-Button:hover{
+    background-color: transparent;
+    border: 2px solid $LittleLemonYellow;
+    color: $LittleLemonYellow;
 }
 
 .image-container img {
@@ -243,6 +261,13 @@ nav {
         background-color: $HighlightBlack;
         color: $HighlightWhite;
         margin: 40px auto;
+        border: 2px solid $HighlightBlack;
+    }
+
+    button:hover{
+        border: 2px solid $HighlightBlack;
+        background-color: transparent;
+        color: $HighlightBlack;
     }
 }
 
@@ -306,6 +331,9 @@ nav {
                     height: auto;
                     margin-right: 8px;
                 }
+            }
+            button:hover{
+                background-color: #ccc;
             }
         }
     }
@@ -675,5 +703,77 @@ form{
     footer .SoMe-Container{
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 48px;
+    }
+}
+
+
+// ##########  About  ########## //
+
+.About-Page-Container{
+    border-top: 1px solid $LittleLemonGreen;
+    display: flex;
+
+    .Main-About-Section{
+        display: flex;
+        padding: $GeneralStripeSpacing;
+        gap: 40px;
+        flex-direction: column-reverse;
+
+        img{
+            max-width: 100%;
+            border-radius: $BigCornerRadius;
+            box-shadow: $SmallCornerRadius;
+        }
+
+        div{
+            max-width: 100%;
+
+            h2{
+                margin-top: 0;
+            }
+
+            p{
+                color: $HighlightBlack;
+                font-size: calc(var(--my-chosen-cardhead-size)*0.7);
+            }
+        }
+    }
+}
+
+@media (min-width: 1000px){
+    .About-Page-Container .Main-About-Section{
+        flex-direction: row;
+        align-items: center;
+
+        img{
+            max-width: 50%;
+        }
+
+        div{
+            max-width: 50%;
+        }
+    }
+}
+
+@media (min-width: $HigherGeneralPageMinColumnRequirement) {
+    .Main-About-Section {
+        max-width: $HigherGeneralvMaxWidth;
+        margin: 0 auto;
+        padding: 0;
+    }
+}
+
+// ##########  Reservations  ########## //
+
+.Reservations-Page-Container{
+    border-top: 1px solid $LittleLemonGreen;
+    display: flex;
+}
+
+@media (min-width: $HigherGeneralPageMinColumnRequirement) {
+    .Main-Reservations-Section {
+        max-width: $HigherGeneralvMaxWidth;
+        margin: 0 auto;
+        padding: 0;
     }
 }
