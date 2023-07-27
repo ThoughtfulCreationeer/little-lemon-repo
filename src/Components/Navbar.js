@@ -9,19 +9,13 @@ function Navbar (){
             </a>
             <ul>
                 <li>
-                    <a href='/About'>About</a>
-                </li>
-                <li>
-                    <a href=''>Menu</a>
+                    <a href='/Menu'>Menu</a>
                 </li>
                 <li>
                     <a href='/Reservations'>Reservations</a>
                 </li>
                 <li>
-                    <a href=''>Order Online</a>
-                </li>
-                <li>
-                    <a href=''>Login</a>
+                    <a href='/About'>About</a>
                 </li>
             </ul>
         </nav>

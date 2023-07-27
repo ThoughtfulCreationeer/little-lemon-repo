@@ -767,13 +767,36 @@ form{
 
 .Reservations-Page-Container{
     border-top: 1px solid $LittleLemonGreen;
+    padding-bottom: 64px;
+
+    .Outermost-Form-Container{
+        display: flex;
+        flex-direction: column;
+        background-color: $LittleLemonGreen;
+        border-radius: $BigCornerRadius;
+        padding: 80px 160px;
+        color: white;
+    }
+}
+
+.Reservations-Form-Content{
     display: flex;
+    flex-direction: column;
+}
+
+#Reservations-Form{
+    display: flex;
+    flex-direction: column;
+
+    #Reservations-Step-Header{
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 @media (min-width: $HigherGeneralPageMinColumnRequirement) {
     .Main-Reservations-Section {
         max-width: $HigherGeneralvMaxWidth;
         margin: 0 auto;
-        padding: 0;
     }
 }
