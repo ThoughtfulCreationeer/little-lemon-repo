@@ -9,6 +9,7 @@ $LittleLemonPeach: #EE9972;
 $LittleLemonBeige: #FBDABB;
 $HighlightWhite: #EDEFEE;
 $HighlightBlack: #333333;
+$ErrorRed: #FF2700;
 
 /*Shadow styles*/
 $PrimaryShadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
@@ -579,7 +580,7 @@ footer {
     }
 }
 
-form{
+.News-Letter-Sign-Up-Form{
     display: flex;
     flex-direction: column;
     font-family: 'Karla';
@@ -665,37 +666,38 @@ form{
         }
 
     }
-    .TCE{
+}
+
+.TCE{
+    display: flex;
+    flex-direction: column;
+
+    .Terms-n-conditions{
         display: flex;
-        flex-direction: column;
+        gap: 2px;
 
-        .Terms-n-conditions{
-            display: flex;
-            gap: 2px;
-
-            p{
-                margin: 0;
-                padding: 0;
-                font-size: 12px;
-            }
-
-            a{
-                margin: 0;
-                padding: 0;
-                font-size: 12px;
-                text-decoration: underline;
-            }
-
-            a:hover{
-                cursor: pointer;
-            }
-        }
-        .error-message{
-            font-family: 'karla';
-            font-weight: 400;
-            color: #FF2700;
+        p{
             margin: 0;
+            padding: 0;
+            font-size: 12px;
         }
+
+        a{
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+            text-decoration: underline;
+        }
+
+        a:hover{
+            cursor: pointer;
+        }
+    }
+    .error-message{
+        font-family: 'karla';
+        font-weight: 400;
+        color: $ErrorRed;
+        margin: 0;
     }
 }
 
@@ -787,16 +789,169 @@ form{
 #Reservations-Form{
     display: flex;
     flex-direction: column;
+    gap: 56px;
 
     #Reservations-Step-Header{
         display: flex;
         flex-direction: column;
+
+        h3{
+            margin: 24px, 0;
+        }
+
+        .Reservations-Form-Progress-Line{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+
+
+            #White-Line{
+                flex: 1;
+                height: 0.125em;
+                background-color: $HighlightWhite;
+                border-radius: 0.0625em;
+            }
+        }
+    }
+
+    #Reservation-Inputfields-Container{
+        display: flex;
+        flex-direction: column;
+        padding: 40px;
+        padding-bottom: 64px;
+        border: 2px solid $HighlightWhite;
+        border-radius: 16px;
+        gap: 16px;
+        font-size: 20px;
+
+        label{
+            position: relative;
+
+            span{
+                color: $ErrorRed;
+            }
+
+            select{
+                width: 100%;
+                height: 2.5em;
+                background-color: transparent;
+                border: 2px solid $HighlightWhite;
+                border-radius: 0.5em;
+                padding: 0 0.5em;
+                font-size: 20px;
+                color: $HighlightWhite;
+                font-family: 'Karla';
+                appearance: none;
+            }
+
+            .Select-Icon-Contaier{
+                position: absolute;
+                right: .5em;
+                bottom: .2em;
+                pointer-events: none;
+            }
+
+            input{
+                width: 100%;
+                height: 2.5em;
+                background-color: transparent;
+                border: 2px solid $HighlightWhite;
+                border-radius: 0.5em;
+                padding: 0;
+                padding-left: 0.5em;
+                font-size: 20px;
+                color: $HighlightWhite;
+                font-family: 'Karla';
+                box-sizing: border-box;
+            }
+
+            input::placeholder{
+                color: $HighlightWhite;
+                font-family: 'Karla';
+            }
+            
+            .Seating-Container{
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                .Seating-Selection-Card{
+                    display: flex;
+                    flex-direction: column;
+                    border: 2px solid $HighlightWhite;
+                    border-radius: 8px;
+                    width: 100%;
+                    background-color: $HighlightWhite;
+                    overflow: hidden;
+                    color: $HighlightBlack;
+                    gap: 12px;
+
+                    img{
+                        height: 294px;
+                        width: 100%;
+                        object-fit: cover;
+                        border-radius: 7px;
+                    }
+
+                    div{
+                        padding: 8px;
+
+                        h4{
+                            margin: 0 0 16px 0;
+                        }
+
+                        label{
+                            display: flex;
+                            border: 2px solid $HighlightBlack;
+                            border-radius: 7px;
+                            align-items: center;
+                            gap: 4px;
+                            width: fit-content;
+                            padding: 4px 4px;
+                            padding-right: 8px;
+                        }
+                    }
+                }
+            }
+        }
+
+        #checkbox{
+            width: 16px;
+            height: 16px;
+            border: 2px solid $HighlightBlack;
+        }
+
+    }
+
+    #Reservation-Form-Buttons-Container{
+        display: flex;
+        justify-content: space-between;
+
+        button{
+            margin: 0;
+        }
+
+        .Next{
+            background-color: $LittleLemonYellow;
+        }
+    }
+}
+
+
+@media (min-width: $LowerGeneralPageMinColumnRequirement) {
+    #Reservations-Form #Reservation-Inputfields-Container label .Seating-Container{
+        flex-direction: row;
+
+        .Seating-Selection-Card{
+            width: 50%;
+        }
     }
 }
 
 @media (min-width: $HigherGeneralPageMinColumnRequirement) {
     .Main-Reservations-Section {
         max-width: $HigherGeneralvMaxWidth;
-        margin: 0 auto;
+        margin: 0 auto
     }
 }

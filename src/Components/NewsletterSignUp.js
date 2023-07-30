@@ -19,7 +19,7 @@ function NewsletterSignUp(){
     };
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form className="News-Letter-Sign-Up-Form" onSubmit={handleSubmit}>
             <label className="Subscription-label" htmlFor="email">Subscribe to our newsletter</label>
             <div>
                 <input type="email" id="email" placeholder="Enter your email" value={email} onChange= {(e) => setEmail(e.target.value)} />

@@ -1,54 +1,23 @@
-import React, {useState} from "react";
+import React, {useContext} from "react";
+import { multiStepContext } from "./ReservationsContext";
 import ReservationFormStep1 from "./ReservationFormStep1";
 import ReservationFormStep2 from "./ReservationFormStep2";
 import ReservationFormStep3 from "./ReservationFormStep3";
-import ReservationFormConfirmationPage from "./ReservationFormConfirmationPage";
+import ReservationFormConfirmation from "./ReservationFormConfirmation";
 
 const ReservationForm = () => {
-    const [step, setStep] = useState(1);
-    const [reservationFormData, setReservationFormData] = useState({
-        date: "",
-        time: "",
-        guests: "",
-        occasion: "",
-        comment: "",
-        seating: "",
-        firstName: "",
-        lastName: "",
-        phoneNumber: "",
-        email: "",
-        receiveReceipt: false,
-        receiveNewsletter: false,
-    });
+    const {step, finalData} = useContext(multiStepContext);
 
-    const handlePrevious = () =>{
-        setStep((prevStep) => prevStep-1);
-    }
-
-    const handleNext = () =>{
-        if (step < 5){
-            setStep((prevStep) => prevStep+1);
-        } else {
-            setStep(0);
-        }
-    }
-
-    // const handleSubmit = (/*data*/ e) => {
-    //     e.preventDefault();
-    //     console.log("Form submittet:", reservationFormData)
-    //     //setReservationFormData((prevData) => ({ ...prevData, ...data}));
-    // };
-
-    const renderFormStep = () => {
+    const renderFormStep = (step) => {
         switch (step) {
             case 1:
-                return <ReservationFormStep1 reservationFormData={reservationFormData} setReservationFormData={setReservationFormData}/>;
+                return <ReservationFormStep1  />;
             case 2:
-                return <ReservationFormStep2 reservationFormData={reservationFormData} setReservationFormData={setReservationFormData}/>;
+                return <ReservationFormStep2  />;
             case 3:
-                return <ReservationFormStep3 reservationFormData={reservationFormData} setReservationFormData={setReservationFormData}/>;
+                return <ReservationFormStep3  />;
             case 4:
-                return <ReservationFormConfirmationPage reservationFormData={reservationFormData} setReservationFormData={setReservationFormData}/>;
+                return <ReservationFormConfirmation />;
             default:
                 return null;
         }
@@ -56,10 +25,10 @@ const ReservationForm = () => {
 
     return(
         <div className="Reservations-Form-Content">
-            {renderFormStep()}
+            {renderFormStep(step)}
         </div>
     );
 };
 
 
-export default ReservationForm
+export default ReservationForm;
