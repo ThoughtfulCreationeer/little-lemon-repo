@@ -2,16 +2,8 @@ import React, {useContext} from "react"
 import { multiStepContext } from "./ReservationsContext";
 import '../styles.scss';
 
-// const test () => {
-//     console
-// }
-
 export default function ReservationFormStep3() {
-    const { setStep, formData, setFormData } = useContext(multiStepContext);
-    // const handleSubmitStepOne = (e) => {
-    //     e.preventdefault();
-    //     handleNext();
-    // };
+    const { setStep, reservationFormData, setReservationFormData } = useContext(multiStepContext);
 
     return(
         <form id="Reservations-Form">
@@ -29,19 +21,19 @@ export default function ReservationFormStep3() {
             <div id="Reservation-Inputfields-Container">
                 <label>
                     <span>*</span> First Name
-                    <input placeholder="Write your first name here"></input>
+                    <input placeholder="Write your first name here" value={reservationFormData['First name']} onChange={(e) => setReservationFormData({...reservationFormData, 'First name' : e.target.value})}></input>
                 </label>
                 <label>
                     <span>*</span> Last Name
-                    <input placeholder="Write your last name here"></input>
+                    <input placeholder="Write your last name here" value={reservationFormData['Last name']} onChange={(e) => setReservationFormData({...reservationFormData, 'Last name' : e.target.value})}></input>
                 </label>
                 <label>
                     <span>*</span> Phone Number
-                    <input placeholder="Write your phone number here"></input>
+                    <input placeholder="Write your phone number here" value={reservationFormData['Phone number']} onChange={(e) => setReservationFormData({...reservationFormData, 'Phone number' : e.target.value})}></input>
                 </label>
                 <label>
                     {"Email (Optional)"}
-                    <input placeholder="Add a specific request"></input>
+                    <input type="email" placeholder="Add a specific request" value={reservationFormData['Email']} onChange={(e) => setReservationFormData({...reservationFormData, 'Email' : e.target.value})}></input>
                 </label>
                 <label>
                     <input type="checkbox" id="checkbox" />

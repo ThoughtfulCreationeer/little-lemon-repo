@@ -825,7 +825,7 @@ footer {
         gap: 16px;
         font-size: 20px;
 
-        label{
+        div{
             position: relative;
 
             span{
@@ -870,7 +870,7 @@ footer {
                 color: $HighlightWhite;
                 font-family: 'Karla';
             }
-            
+
             .Seating-Container{
                 display: flex;
                 flex-direction: column;
@@ -916,10 +916,9 @@ footer {
             }
         }
 
-        #checkbox{
+        #Seating-Option{
             width: 16px;
             height: 16px;
-            border: 2px solid $HighlightBlack;
         }
 
     }
@@ -938,10 +937,45 @@ footer {
     }
 }
 
+.Reservations-Confirmation-Page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+
+    img{
+        width: 20%;
+    }
+
+    .Dear-Guest{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        h3{
+            margin: 0;
+        }
+    }
+
+    #Reservation-Form-Buttons-Container{
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+
+        button{
+            margin: 0;
+        }
+
+        .Cancel-Reservation{
+            background-color: $ErrorRed;
+        }
+    }
+}
 
 @media (min-width: $LowerGeneralPageMinColumnRequirement) {
-    #Reservations-Form #Reservation-Inputfields-Container label .Seating-Container{
+    #Reservations-Form #Reservation-Inputfields-Container div .Seating-Container{
         flex-direction: row;
+        width: 100%;
 
         .Seating-Selection-Card{
             width: 50%;

@@ -1,17 +1,10 @@
 import React, {useContext} from "react"
 import { multiStepContext } from "./ReservationsContext";
 import '../styles.scss';
-
-// const test () => {
-//     console
-// }
+import ReservationForm from "./ReservationForm";
 
 export default function ReservationFormStep2() {
-    const { setStep, formData, setFormData } = useContext(multiStepContext);
-    // const handleSubmitStepOne = (e) => {
-    //     e.preventdefault();
-    //     handleNext();
-    // };
+    const { setStep, reservationFormData, setReservationFormData } = useContext(multiStepContext);
 
     return(
         <form id="Reservations-Form">
@@ -27,15 +20,15 @@ export default function ReservationFormStep2() {
             </div>
 
             <div id="Reservation-Inputfields-Container">
-                <label>
-                    {"Choose Seeting (Optional)"}
+                <div>
+                    Choose Seating
                     <div className="Seating-Container">
                         <div className="Seating-Selection-Card">
                             <img src="./Form-Image-Content/Terrace.jpg"/>
                             <div>
                                 <h4>The Terrace</h4>
                             <label>
-                                <input type="checkbox" id="checkbox" />
+                                <input type="radio" name="seatingOption" id="Seating-Option" value={reservationFormData["The Terrace"]} onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})}/>
                                 <span class="custom-checkbox"></span>
                                 Select
                             </label>
@@ -46,14 +39,14 @@ export default function ReservationFormStep2() {
                             <div>
                                 <h4>The Lounge</h4>
                             <label>
-                                <input type="checkbox" id="checkbox" />
+                                <input type="radio" name="seatingOption" id="Seating-Option" value={reservationFormData["The Lounge"]} onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})} />
                                 <span class="custom-checkbox"></span>
                                 Select
                             </label>
                             </div>
                         </div>
                     </div>
-                </label>
+                </div>
             </div>
 
             <div id="Reservation-Form-Buttons-Container">

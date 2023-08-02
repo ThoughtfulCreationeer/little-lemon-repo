@@ -2,9 +2,6 @@ import React, {useContext} from "react"
 import { multiStepContext } from "./ReservationsContext";
 import '../styles.scss';
 
-// const test () => {
-//     console
-// }
 
 export default function ReservationFormConfirmation() {
     const { setStep, formData, setFormData } = useContext(multiStepContext);
@@ -14,14 +11,22 @@ export default function ReservationFormConfirmation() {
     // };
 
     return(
-        <div id="Reservations-Form">
-            <div id="Reservations-Step-Header">
-                <h3>Find a table for any occation in...</h3>
-                <p>Confirmation</p>
+        <div className="Reservations-Confirmation-Page">
+            <img src="./Footer-Content/little-lemon-TM.png" alt="The Little Lemon Resturant Logo Trademark"/>
+            <div className="Dear-Guest">
+                <h3>Dear Guest</h3>
+                <h3>We are looking forward to serving you and your guests on your visit</h3>
             </div>
-
-            <button onClick={() => setStep(2)}> Previous </button>
-            <button onClick={() => setStep(4)}> Next </button>
+            <div>
+                <p>18-06-2023 at 18:00 - Current Spaceholder</p>
+                <p>2 persons - Current Spaceholder</p>
+                <p>In the lounge - Current Spaceholder</p>
+                <p>{"[Specific request] - Current Spaceholder"}</p>
+            </div>
+            <div id="Reservation-Form-Buttons-Container">
+                <button onClick={() => setStep(3)}> Change Reservation </button>
+                <button className="Cancel-Reservation" onClick={() => setStep(4)}> Cancel Reservation </button>
+            </div>
         </div>
     );
 };

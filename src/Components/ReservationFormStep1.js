@@ -2,8 +2,6 @@ import React, {useContext} from "react"
 import { multiStepContext } from "./ReservationsContext";
 import '../styles.scss';
 
-
-
 export default function ReservationFormStep1() {
     const { setStep, formData, setFormData } = useContext(multiStepContext);
 
@@ -85,7 +83,6 @@ export default function ReservationFormStep1() {
                     {"Comment (Optional)"}
                     <input placeholder="Add a specific request"></input>
                 </label>
-
             </div>
 
             <div id="Reservation-Form-Buttons-Container">
