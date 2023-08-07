@@ -635,38 +635,72 @@ footer {
         }
     }
 
-    .checkbox{
-        display: flex;
-        align-items: center;
-        gap: 8px;
+}
 
-        #checkbox{
-            width: 28px;
-            height: 28px;
-            margin: 0;
-        }
+// ### checkboxes ### // This is a mess that needs to be cleaned because of repeatability
 
-        .custom-checkbox{
-            position: absolute;
-            background-color: $LittleLemonGreen;
-            border: 2px solid white;
-            border-radius: 4px;
-            width: 24px;
-            height: 24px;
-            margin: 0;
-            cursor: pointer;
-        }
+#Reservation-Inputfields-Container .checkbox{
+    display: flex;
+    align-items: center;
+    gap: 8px;
 
-        .custom-checkbox:hover{
-            background-color: #CCCCCC;
-        }
+    #checkbox{
+        width: 28px;
+        height: 28px;
+        margin: 0;
+    }
 
-        #checkbox:checked ~ .custom-checkbox{
-            background-color: transparent;
-        }
+    .custom-checkbox{
+        position: absolute;
+        background-color: $LittleLemonGreen;
+        border: 2px solid white;
+        border-radius: 4px;
+        width: 24px;
+        height: 24px;
+        margin: 0;
+        cursor: pointer;
+    }
 
+    .custom-checkbox:hover{
+        background-color: #CCCCCC;
+    }
+
+    #checkbox:checked ~ .custom-checkbox{
+        background-color: transparent;
     }
 }
+
+.checkbox{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    #checkbox{
+        width: 28px;
+        height: 28px;
+        margin: 0;
+    }
+
+    .custom-checkbox{
+        position: absolute;
+        background-color: $LittleLemonGreen;
+        border: 2px solid white;
+        border-radius: 4px;
+        width: 24px;
+        height: 24px;
+        margin: 0;
+        cursor: pointer;
+    }
+
+    .custom-checkbox:hover{
+        background-color: #CCCCCC;
+    }
+
+    #checkbox:checked ~ .custom-checkbox{
+        background-color: transparent;
+    }
+}
+
 
 .TCE{
     display: flex;
@@ -824,8 +858,60 @@ footer {
         border-radius: 16px;
         gap: 16px;
         font-size: 20px;
+        position: relative;
 
-        div{
+        .Seating-Container{
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            .Seating-Selection-Card{
+                display: flex;
+                border: 2px solid $HighlightWhite;
+                border-radius: 8px;
+                width: 100%;
+                background-color: $HighlightWhite;
+                overflow: hidden;
+                color: $HighlightBlack;
+                gap: 12px;
+                align-items: center;
+
+                img{
+                    height: 294px;
+                    width: 100%;
+                    object-fit: cover;
+                    border-radius: 7px;
+                }
+
+                div{
+                    width: 10em;
+                    padding: 16px 24px;
+
+                    h4{
+                        margin: 0;
+                    }
+                    // input[type="radio"] {
+                    //     appearance: none;
+                    //     -webkit-appearance: none;
+                    //     -moz-appearance: none;
+                    //     width: 0;
+                    //     height: 0;
+                    //     margin: 0;
+                    //     padding: 0;
+                    //     border: none;
+                    //     position: absolute;
+                    //     pointer-events: none;
+                    //   }
+                }
+            }
+        }
+
+        #Seating-Option{
+            width: 16px;
+            height: 16px;
+        }
+
+        label{
             position: relative;
 
             span{
@@ -871,55 +957,8 @@ footer {
                 font-family: 'Karla';
             }
 
-            .Seating-Container{
-                display: flex;
-                flex-direction: column;
-                gap: 8px;
-
-                .Seating-Selection-Card{
-                    display: flex;
-                    flex-direction: column;
-                    border: 2px solid $HighlightWhite;
-                    border-radius: 8px;
-                    width: 100%;
-                    background-color: $HighlightWhite;
-                    overflow: hidden;
-                    color: $HighlightBlack;
-                    gap: 12px;
-
-                    img{
-                        height: 294px;
-                        width: 100%;
-                        object-fit: cover;
-                        border-radius: 7px;
-                    }
-
-                    div{
-                        padding: 8px;
-
-                        h4{
-                            margin: 0 0 16px 0;
-                        }
-
-                        label{
-                            display: flex;
-                            border: 2px solid $HighlightBlack;
-                            border-radius: 7px;
-                            align-items: center;
-                            gap: 4px;
-                            width: fit-content;
-                            padding: 4px 4px;
-                            padding-right: 8px;
-                        }
-                    }
-                }
-            }
         }
 
-        #Seating-Option{
-            width: 16px;
-            height: 16px;
-        }
 
     }
 
@@ -972,16 +1011,8 @@ footer {
     }
 }
 
-@media (min-width: $LowerGeneralPageMinColumnRequirement) {
-    #Reservations-Form #Reservation-Inputfields-Container div .Seating-Container{
-        flex-direction: row;
-        width: 100%;
-
-        .Seating-Selection-Card{
-            width: 50%;
-        }
-    }
-}
+// @media (min-width: $LowerGeneralPageMinColumnRequirement) {
+// }
 
 @media (min-width: $HigherGeneralPageMinColumnRequirement) {
     .Main-Reservations-Section {

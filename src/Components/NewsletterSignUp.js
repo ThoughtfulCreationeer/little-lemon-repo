@@ -27,7 +27,7 @@ function NewsletterSignUp(){
             </div>
             <label className="checkbox" htmlFor="checkbox">
                 <input type="checkbox" id="checkbox" checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} />
-                <span class="custom-checkbox"></span>
+                <span className="custom-checkbox"></span>
                 I agree to recieve the newsletter.
             </label>
             <div className="TCE">

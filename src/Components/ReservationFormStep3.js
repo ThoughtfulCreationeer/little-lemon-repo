@@ -21,28 +21,48 @@ export default function ReservationFormStep3() {
             <div id="Reservation-Inputfields-Container">
                 <label>
                     <span>*</span> First Name
-                    <input placeholder="Write your first name here" value={reservationFormData['First name']} onChange={(e) => setReservationFormData({...reservationFormData, 'First name' : e.target.value})}></input>
+                    <input
+                        placeholder="Write your first name here"
+                        value={reservationFormData['First name']}
+                        onChange={(e) => setReservationFormData({...reservationFormData, 'First name' : e.target.value})}>
+                    </input>
                 </label>
                 <label>
                     <span>*</span> Last Name
-                    <input placeholder="Write your last name here" value={reservationFormData['Last name']} onChange={(e) => setReservationFormData({...reservationFormData, 'Last name' : e.target.value})}></input>
+                    <input
+                        placeholder="Write your last name here"
+                        value={reservationFormData['Last name']}
+                        onChange={(e) => setReservationFormData({...reservationFormData, 'Last name' : e.target.value})}>
+                    </input>
                 </label>
                 <label>
                     <span>*</span> Phone Number
-                    <input placeholder="Write your phone number here" value={reservationFormData['Phone number']} onChange={(e) => setReservationFormData({...reservationFormData, 'Phone number' : e.target.value})}></input>
+                    <input
+                        placeholder="Write your phone number here"
+                        value={reservationFormData['Phone number']}
+                        onChange={(e) => setReservationFormData({...reservationFormData, 'Phone number' : e.target.value})}>
+                    </input>
                 </label>
                 <label>
                     {"Email (Optional)"}
-                    <input type="email" placeholder="Add a specific request" value={reservationFormData['Email']} onChange={(e) => setReservationFormData({...reservationFormData, 'Email' : e.target.value})}></input>
+                    <input
+                        type="email"
+                        placeholder="Add a specific request"
+                        value={reservationFormData['Email']}
+                        onChange={(e) => setReservationFormData({...reservationFormData, 'Email' : e.target.value})}>
+                    </input>
                 </label>
-                <label>
-                    <input type="checkbox" id="checkbox" />
-                    <span class="custom-checkbox"></span>
+                <label className="checkbox">
+                    <input
+                        type="checkbox"
+                        id="checkbox"
+                    />
+                    <span className="custom-checkbox"></span>
                     I would like to receive the receipt on email after my dinner
                 </label>
-                <label>
+                <label className="checkbox">
                     <input type="checkbox" id="checkbox" />
-                    <span class="custom-checkbox"></span>
+                    <span className="custom-checkbox"></span>
                     I would like to receive the email newsletter
                 </label>
                 <div className="TCE">

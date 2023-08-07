@@ -1,7 +1,7 @@
 import React, {useContext} from "react"
 import { multiStepContext } from "./ReservationsContext";
-import '../styles.scss';
 import ReservationForm from "./ReservationForm";
+import '../styles.scss';
 
 export default function ReservationFormStep2() {
     const { setStep, reservationFormData, setReservationFormData } = useContext(multiStepContext);
@@ -20,32 +20,30 @@ export default function ReservationFormStep2() {
             </div>
 
             <div id="Reservation-Inputfields-Container">
-                <div>
-                    Choose Seating
-                    <div className="Seating-Container">
-                        <div className="Seating-Selection-Card">
-                            <img src="./Form-Image-Content/Terrace.jpg"/>
-                            <div>
-                                <h4>The Terrace</h4>
-                            <label>
-                                <input type="radio" name="seatingOption" id="Seating-Option" value={reservationFormData["The Terrace"]} onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})}/>
-                                <span class="custom-checkbox"></span>
-                                Select
-                            </label>
-                            </div>
+                Choose Seating
+                <div className="Seating-Container">
+                    <label className="Seating-Selection-Card">
+                        <div>
+                            <h4>The Terrace</h4>
+                            <p>16 seats left</p>
+                            <input type="radio" name="seatingOption" id="Seating-Option" value={reservationFormData["The Terrace"]} onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})}/>
                         </div>
-                        <div className="Seating-Selection-Card">
-                            <img src="./Form-Image-Content/Lounge.jpg"/>
-                            <div>
-                                <h4>The Lounge</h4>
-                            <label>
-                                <input type="radio" name="seatingOption" id="Seating-Option" value={reservationFormData["The Lounge"]} onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})} />
-                                <span class="custom-checkbox"></span>
-                                Select
-                            </label>
-                            </div>
+                        <img src="./Form-Image-Content/Terrace.jpg"/>
+                    </label>
+                    <label className="Seating-Selection-Card">
+                        <div>
+                            <h4>The Lounge</h4>
+                            <p>16 seats left</p>
+                            <input type="radio" name="seatingOption" id="Seating-Option" value={reservationFormData["The Lounge"]} onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})} />
                         </div>
-                    </div>
+                        <img src="./Form-Image-Content/Lounge.jpg"/>
+                    </label>
+                    <label className="Seating-Selection-Card">
+                        <div>
+                            <h4>Waiters Choice</h4>
+                            <input type="radio" name="seatingOption" id="Seating-Option" value={reservationFormData["Waiters Choice"]} onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})}/>
+                        </div>
+                    </label>
                 </div>
             </div>
 
