@@ -7,6 +7,10 @@ export const multiStepContext = createContext();
         const [reservationFormData, setReservationFormData] = useState([]);
         const [finalData, setFinalData] = useState([]);
 
+        function submitData() {
+
+        }
+
     return(
         <multiStepContext.Provider value={{step, setStep, reservationFormData, setReservationFormData, finalData, setFinalData}}>
             <ReservationForm />

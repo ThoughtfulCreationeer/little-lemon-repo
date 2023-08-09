@@ -5,6 +5,8 @@ import '../styles.scss';
 
 export default function ReservationFormStep2() {
     const { setStep, reservationFormData, setReservationFormData } = useContext(multiStepContext);
+    
+    const isChecked = (value) => value === reservationFormData["Seating"];
 
     return(
         <form id="Reservations-Form">
@@ -26,7 +28,14 @@ export default function ReservationFormStep2() {
                         <div>
                             <h4>The Terrace</h4>
                             <p>16 seats left</p>
-                            <input type="radio" name="seatingOption" id="Seating-Option" value={reservationFormData["The Terrace"]} onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})}/>
+                            <input
+                                type="radio"
+                                name="seatingOption"
+                                id="Seating-Option"
+                                value='The Terrace'
+                                checked ={isChecked("The Terrace")}
+                                onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})}
+                            />
                         </div>
                         <img src="./Form-Image-Content/Terrace.jpg"/>
                     </label>
@@ -34,14 +43,28 @@ export default function ReservationFormStep2() {
                         <div>
                             <h4>The Lounge</h4>
                             <p>16 seats left</p>
-                            <input type="radio" name="seatingOption" id="Seating-Option" value={reservationFormData["The Lounge"]} onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})} />
+                            <input
+                                type="radio"
+                                name="seatingOption"
+                                id="Seating-Option"
+                                value="The Lounge"
+                                checked ={isChecked("The Lounge")}
+                                onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})}
+                            />
                         </div>
                         <img src="./Form-Image-Content/Lounge.jpg"/>
                     </label>
                     <label className="Seating-Selection-Card">
                         <div>
                             <h4>Waiters Choice</h4>
-                            <input type="radio" name="seatingOption" id="Seating-Option" value={reservationFormData["Waiters Choice"]} onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})}/>
+                            <input
+                                type="radio"
+                                name="seatingOption"
+                                id="Seating-Option"
+                                value="Waiters Choice"
+                                checked={isChecked("Waiters Choice")}
+                                onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})}
+                            />
                         </div>
                     </label>
                 </div>

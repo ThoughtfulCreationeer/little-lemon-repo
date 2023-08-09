@@ -3,7 +3,7 @@ import { multiStepContext } from "./ReservationsContext";
 import '../styles.scss';
 
 export default function ReservationFormStep3() {
-    const { setStep, reservationFormData, setReservationFormData } = useContext(multiStepContext);
+    const { setStep, reservationFormData, setReservationFormData, submitData } = useContext(multiStepContext);
 
     return(
         <form id="Reservations-Form">
@@ -75,7 +75,7 @@ export default function ReservationFormStep3() {
 
             <div id="Reservation-Form-Buttons-Container">
                 <button onClick={() => setStep(2)}> Previous </button>
-                <button className="Next" onClick={() => setStep(4)}> Finalize Booking </button>
+                <button className="Next" onClick={() => setStep(4) && {submitData}}> Finalize Booking </button>
             </div>
         </form>
     );
