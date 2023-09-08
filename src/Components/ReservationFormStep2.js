@@ -5,7 +5,7 @@ import '../styles.scss';
 
 export default function ReservationFormStep2() {
     const { setStep, reservationFormData, setReservationFormData } = useContext(multiStepContext);
-    
+
     const isChecked = (value) => value === reservationFormData["Seating"];
 
     return(

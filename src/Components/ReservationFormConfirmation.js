@@ -14,8 +14,7 @@ export default function ReservationFormConfirmation() {
         <div className="Reservations-Confirmation-Page">
             <img src="./Footer-Content/little-lemon-TM.png" alt="The Little Lemon Resturant Logo Trademark"/>
             <div className="Dear-Guest">
-                <h3>Dear Guest</h3>
-                <h3>We are looking forward to serving you and your guests on your visit</h3>
+                <h3>We are looking forward to serving you and your guests</h3>
             </div>
             <div>
                 <p>18-06-2023 at 18:00 - Current Spaceholder</p>
