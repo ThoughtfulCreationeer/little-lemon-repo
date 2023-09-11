@@ -13,7 +13,9 @@ export const multiStepContext = createContext();
         const [finalData, setFinalData] = useState([]);
 
         function submitData() {
-
+            setFinalData(finalData => [...finalData, reservationFormData]);
+            setReservationFormData("");
+            setStep(4);
         }
 
     return(
@@ -24,7 +26,8 @@ export const multiStepContext = createContext();
                 reservationFormData, 
                 setReservationFormData, 
                 finalData, 
-                setFinalData
+                setFinalData,
+                submitData
             }}
         >
             <ReservationForm />

@@ -1,26 +1,30 @@
 import React, {useState, useContext, useRef, useEffect} from "react"
 import { multiStepContext } from "./ReservationsContext";
-import Modal from "./ReservationFormFinalSubmitionModal";
+// import Modal from "./ReservationFormFinalSubmitionModal";
 import '../styles.scss';
 
 export default function ReservationFormStep3() {
     const { setStep, reservationFormData, setReservationFormData, submitData } = useContext(multiStepContext);
     const isChecked = (value) => value === true;
+    
+    // 1. Approch to finding making a confirmation pop-up window: https://medium.com/@dimterion/modals-with-html-dialog-element-in-javascript-and-react-fb23c885d62e
     // const [modal, setModal] = useState(false);
-    const ref =  useRef(null);
-    const [show, toggle] = useState(false);
 
-    useEffect(() => {
-        if (!ref.current){
-            return;
-        }
+    // 2. Approch to making a confirmation pop-up window: https://codesandbox.io/s/react-native-html-dialog-pq84l6?file=/src/App.js
+    // const ref =  useRef(null);
+    // const [show, toggle] = useState(false);
 
-        if (show) {
-            ref.current.showModal();
-        } else {
-            ref.current.close();
-        }
-    }, [ref, show]);
+    // useEffect(() => {
+    //     if (!ref.current){
+    //         return;
+    //     }
+
+    //     if (show) {
+    //         ref.current.showModal();
+    //     } else {
+    //         ref.current.close();
+    //     }
+    // }, [ref, show]);
 
     return(
         <form id="Reservations-Form">
@@ -101,12 +105,18 @@ export default function ReservationFormStep3() {
 
             <div id="Reservation-Form-Buttons-Container">
                 <button onClick={() => setStep(2)}> Previous </button>
-                {/* <button className="Next" onClick={() => setStep(4) && {submitData}}> Finalize Booking </button> */}
+                <button className="Next" onClick={submitData}> Finalize Booking </button>
+                
+
+                {/* Open componenten ReservationFromConfirmation */}
                 {/* <button className="Next" onClick={() => setModal(true)}> Finalize Booking </button> */}
-                <button onClick={() => toggle(!show)}>Open</button>
+                
+                {/* Open dilogen specifiseret i functionen i begyndelsen af dette skript */}
+                {/* <button onClick={() => toggle(!show)}>Open</button> */}
             </div>
             {/* <Modal openModal={modal} closeModal={() => setModal(false)} /> */}
-            <dialog
+            
+            {/* <dialog
                 ref={ref}
                 onClick={(e) => {
                 const dialogDimensions = ref.current.getBoundingClientRect();
@@ -121,7 +131,7 @@ export default function ReservationFormStep3() {
                 }}
             >
                 <h1>Test</h1>
-            </dialog>
+            </dialog> */}
         </form>
     );
 };
