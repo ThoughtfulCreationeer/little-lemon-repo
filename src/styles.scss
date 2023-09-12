@@ -9,7 +9,7 @@ $LittleLemonPeach: #EE9972;
 $LittleLemonBeige: #FBDABB;
 $HighlightWhite: #EDEFEE;
 $HighlightBlack: #333333;
-$ErrorRed: #FF2700;
+$ErrorRed: #E54A2E;
 
 /*Shadow styles*/
 $PrimaryShadow: 0px 4px 40px 0px rgba(0, 0, 0, 0.25);
@@ -190,6 +190,19 @@ nav {
     background-color: transparent;
     border: 2px solid $LittleLemonYellow;
     color: $LittleLemonYellow;
+}
+
+#White-Button {
+    background-color: $HighlightWhite;
+    color: $HighlightBlack;
+    border: 2px solid $HighlightWhite;
+
+}
+
+#White-Button:hover{
+    background-color: transparent;
+    color: $HighlightWhite;
+    border: 2px solid $HighlightWhite;
 }
 
 .image-container img {
@@ -860,6 +873,15 @@ footer {
         font-size: 20px;
         position: relative;
 
+        .Seating-Label{
+            display: flex;
+            line-height: 0;
+
+            span{
+                color: $ErrorRed;
+            }
+        }
+
         .Seating-Container{
             display: flex;
             flex-direction: column;
@@ -870,21 +892,25 @@ footer {
                 border: 2px solid $HighlightWhite;
                 border-radius: 8px;
                 width: 100%;
-                background-color: $HighlightWhite;
+                background-color: transparent;
                 overflow: hidden;
-                color: $HighlightBlack;
+                color: $HighlightWhite;
                 gap: 12px;
                 align-items: center;
+                cursor: pointer;
+                input[type="radio"] {
+                    display: none;
+                }
 
                 img{
-                    height: 294px;
+                    height: 140px;
                     width: 100%;
                     object-fit: cover;
-                    border-radius: 7px;
+                    border-left: $HighlightWhite 2px solid;
                 }
 
                 div{
-                    width: 10em;
+                    width: 11em;
                     padding: 16px 24px;
 
                     h4{
@@ -904,6 +930,26 @@ footer {
                     //   }
                 }
             }
+
+            .Seating-Selection-Card:hover{
+                background-color: #ccc;
+                color: $HighlightBlack;
+
+                img{
+                    filter: brightness(110%);
+                }
+
+            }
+
+            .Seating-Selection-Card.selected {
+                color: $HighlightBlack;
+                background-color: $HighlightWhite;
+
+                img{
+                    filter: brightness(110%);
+                }
+            }
+
         }
 
         #Seating-Option{
@@ -968,10 +1014,6 @@ footer {
 
         button{
             margin: 0;
-        }
-
-        .Next{
-            background-color: $LittleLemonYellow;
         }
     }
 }
@@ -1049,6 +1091,12 @@ footer {
 
         .Cancel-Reservation{
             background-color: $ErrorRed;
+            border: $ErrorRed 2px solid;
+        }
+        .Cancel-Reservation:hover{
+            border: $ErrorRed 2px solid;
+            background-color: transparent;
+            color: $ErrorRed;
         }
     }
 }

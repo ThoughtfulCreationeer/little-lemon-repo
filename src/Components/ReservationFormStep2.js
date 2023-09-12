@@ -22,12 +22,12 @@ export default function ReservationFormStep2() {
             </div>
 
             <div id="Reservation-Inputfields-Container">
-                Choose Seating
+                <div className="Seating-Label"> <span>*</span> Choose Seating </div>
                 <div className="Seating-Container">
-                    <label className="Seating-Selection-Card">
+                    <label className={`Seating-Selection-Card ${isChecked("The Terrace") ? "selected" : ""}`}>
                         <div>
                             <h4>The Terrace</h4>
-                            <p>16 seats left</p>
+                            {/* <p>16 seats left</p> */}
                             <input
                                 type="radio"
                                 name="seatingOption"
@@ -39,10 +39,10 @@ export default function ReservationFormStep2() {
                         </div>
                         <img src="./Form-Image-Content/Terrace.jpg"/>
                     </label>
-                    <label className="Seating-Selection-Card">
+                    <label className={`Seating-Selection-Card ${isChecked("The Lounge") ? "selected" : ""}`}>
                         <div>
                             <h4>The Lounge</h4>
-                            <p>16 seats left</p>
+                            {/* <p>16 seats left</p> */}
                             <input
                                 type="radio"
                                 name="seatingOption"
@@ -54,7 +54,7 @@ export default function ReservationFormStep2() {
                         </div>
                         <img src="./Form-Image-Content/Lounge.jpg"/>
                     </label>
-                    <label className="Seating-Selection-Card">
+                    <label className={`Seating-Selection-Card ${isChecked("Waiters Choice") ? "selected" : ""}`}>
                         <div>
                             <h4>Waiters Choice</h4>
                             <input
@@ -66,13 +66,14 @@ export default function ReservationFormStep2() {
                                 onChange={(e) => setReservationFormData({...reservationFormData, "Seating" : e.target.value})}
                             />
                         </div>
+                        <img src="./Form-Image-Content/Waiter.jpg"/>
                     </label>
                 </div>
             </div>
 
             <div id="Reservation-Form-Buttons-Container">
-                <button onClick={() => setStep(1)}> Previous </button>
-                <button className="Next" onClick={() => setStep(3)}> Next </button>
+                <button id='White-Button' onClick={() => setStep(1)}> Previous </button>
+                <button id='Yellow-Button' onClick={() => setStep(3)}> Next </button>
             </div>
         </form>
     );

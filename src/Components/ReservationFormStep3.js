@@ -104,8 +104,8 @@ export default function ReservationFormStep3() {
             </div>
 
             <div id="Reservation-Form-Buttons-Container">
-                <button onClick={() => setStep(2)}> Previous </button>
-                <button className="Next" onClick={submitData}> Finalize Booking </button>
+                <button id='White-Button' onClick={() => setStep(2)}> Previous </button>
+                <button id='Yellow-Button' onClick={submitData}> Finalize Booking </button>
                 
 
                 {/* Open componenten ReservationFromConfirmation */}

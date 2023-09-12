@@ -107,7 +107,7 @@ export default function ReservationFormStep1() {
 
             <div id="Reservation-Form-Buttons-Container">
                 <span></span>
-                <button className="Next" onClick={() => setStep(2)}> Next </button>
+                <button className="Next" id='Yellow-Button' onClick={() => setStep(2)}> Next </button>
             </div>
         </form>
     );
