@@ -19,7 +19,12 @@ export const multiStepContext = createContext();
 
         function startOver() {
             setFinalData("");
-            setReservationFormData("");
+            setReservationFormData({
+                "Date": "Today",
+                "Arrival time": "18:00",
+                "Number of guests": 2,
+                "Occation": "Ordinary dinner at Little Lemon"
+            });
             setStep(1);
         }
 
