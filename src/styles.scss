@@ -996,6 +996,22 @@ footer {
         }
     }
 
+    .Booking-Details-Container{
+        display: flex;
+        padding: 24px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        border: $HighlightWhite 2px solid;
+        border-radius: 16px;
+
+        .Booking-information{
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
     #Reservation-Form-Buttons-Container{
         display: flex;
         width: 100%;

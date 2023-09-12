@@ -14,8 +14,13 @@ export const multiStepContext = createContext();
 
         function submitData() {
             setFinalData(finalData => [...finalData, reservationFormData]);
-            setReservationFormData("");
             setStep(4);
+        }
+
+        function startOver() {
+            setFinalData("");
+            setReservationFormData("");
+            setStep(1);
         }
 
     return(
@@ -27,7 +32,8 @@ export const multiStepContext = createContext();
                 setReservationFormData, 
                 finalData, 
                 setFinalData,
-                submitData
+                submitData,
+                startOver
             }}
         >
             <ReservationForm />

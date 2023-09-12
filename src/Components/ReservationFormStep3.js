@@ -52,7 +52,7 @@ export default function ReservationFormStep3() {
                     <span>*</span> Last Name
                     <input
                         placeholder="Write your last name here"
-                        value={reservationFormData['Last name']}
+                        value={reservationFormData['LastName']}
                         onChange={(e) => setReservationFormData({...reservationFormData, 'Last name' : e.target.value})}>
                     </input>
                 </label>
@@ -60,7 +60,7 @@ export default function ReservationFormStep3() {
                     <span>*</span> Phone Number
                     <input
                         placeholder="Write your phone number here"
-                        value={reservationFormData['Phone number']}
+                        value={reservationFormData['PhoneNumber']}
                         onChange={(e) => setReservationFormData({...reservationFormData, 'Phone number' : e.target.value})}>
                     </input>
                 </label>
