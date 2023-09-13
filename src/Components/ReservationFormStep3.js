@@ -40,40 +40,44 @@ export default function ReservationFormStep3() {
             </div>
 
             <div id="Reservation-Inputfields-Container">
-                <label>
+                <label for="FN">
                     <span>*</span> First Name
                     <input
+                        id="FN"
                         placeholder="Write your first name here"
                         value={reservationFormData['First name']}
                         onChange={(e) => setReservationFormData({...reservationFormData, 'First name' : e.target.value})}>
                     </input>
                 </label>
-                <label>
+                <label for="LN">
                     <span>*</span> Last Name
                     <input
+                        id="LN"
                         placeholder="Write your last name here"
                         value={reservationFormData['LastName']}
                         onChange={(e) => setReservationFormData({...reservationFormData, 'Last name' : e.target.value})}>
                     </input>
                 </label>
-                <label>
+                <label for="PN">
                     <span>*</span> Phone Number
                     <input
+                        id="PN"
                         placeholder="Write your phone number here"
                         value={reservationFormData['PhoneNumber']}
                         onChange={(e) => setReservationFormData({...reservationFormData, 'Phone number' : e.target.value})}>
                     </input>
                 </label>
-                <label>
+                <label for="Email">
                     {"Email (Optional)"}
                     <input
+                        id="Email"
                         type="email"
                         placeholder="Add a specific request"
                         value={reservationFormData['Email']}
                         onChange={(e) => setReservationFormData({...reservationFormData, 'Email' : e.target.value})}>
                     </input>
                 </label>
-                <label className="checkbox">
+                <label for="checkbox" className="checkbox">
                     <input
                         type="checkbox"
                         id="checkbox"
@@ -84,7 +88,7 @@ export default function ReservationFormStep3() {
                     <span className="custom-checkbox"></span>
                     I would like to receive the receipt on email after my dinner
                 </label>
-                <label className="checkbox">
+                <label for="checkbox" className="checkbox">
                     <input
                         type="checkbox"
                         id="checkbox"

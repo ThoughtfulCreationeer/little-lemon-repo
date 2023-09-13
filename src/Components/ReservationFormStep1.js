@@ -1,9 +1,45 @@
-import React, {useContext} from "react"
+import React, {useState, useEffect, useContext} from "react"
 import { multiStepContext } from "./ReservationsContext";
+import { fetchAPI } from "./AvailableHoursAPI";
 import '../styles.scss';
 
 export default function ReservationFormStep1() {
     const { setStep, reservationFormData, setReservationFormData } = useContext(multiStepContext);
+    const [availableTimes, setAvailableTimes] = useState([]);
+    const getApiDateFormat = (dateSelection) => {
+        // Create a new Date object for the current date.
+        const today = new Date();
+        
+        // If the user has selected "Tomorrow", add one day to the current date.
+        if (dateSelection === "Tomorrow") {
+            today.setDate(today.getDate() + 1);
+        }
+        
+        // Convert the date object to the format YYYY-MM-DD.
+        return today.toISOString().split('T')[0];
+
+    }
+    
+
+    useEffect(() => {
+        async function fetchAvailableTimes() {
+            try{
+                const dateString = getApiDateFormat(reservationFormData["Date"]);
+                const dateObj = new Date(dateString);
+                const times = await fetchAPI(dateObj);
+                setAvailableTimes(times);
+            } catch(error){
+                console.log("Error fetching times:", error);
+            }
+        }
+
+        fetchAvailableTimes();
+
+        if (!reservationFormData["Date"]) {
+            setReservationFormData({...reservationFormData, "Date": "Today"});
+        }
+
+    }, [reservationFormData["Date"]]);
 
     return(
         <form id="Reservations-Form">
@@ -19,48 +55,51 @@ export default function ReservationFormStep1() {
             </div>
 
             <div id="Reservation-Inputfields-Container">
-                <label>
+
+                {/* Note that the for attribute helps associate the label with the input/selector by having the same name as the id attribute */}
+                <label for="Date">
                     <span>*</span> Date
                     <select
                         className="selectdiv"
+                        id="Date"
                         value={reservationFormData["Date"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Date" : e.target.value})}
                     >
-                        <option selected >Today</option>
+                        <option>Today</option>
                         <option>Tomorrow</option>
                     </select>
                     <div className="Select-Icon-Contaier">
                         <img src="./Form-Image-Content/Dropdown-Chevron.svg"/>
                     </div>
                 </label>
-                <label>
+
+                <label for="Arival time">
                     <span>*</span> Arrival Time
                     <select
                         className="selectdiv"
+                        id="Arival time"
                         value={reservationFormData["Arrival time"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Arrival time" : e.target.value})}
                         >
-                            <option>17:00</option>
-                            <option>17:30</option>
-                            <option selected>18:00</option>
-                            <option>18:30</option>
-                            <option>19:00</option>
-                            <option>19:30</option>
-                            <option>20:00</option>
+                            {availableTimes.map((time) => (
+                                <option key={time} value={time}> {time} </option>
+                            ))}
                     </select>
                     <div className="Select-Icon-Contaier">
                         <img src="./Form-Image-Content/Dropdown-Chevron.svg"/>
                     </div>
                 </label>
-                <label>
+
+                <label for="NoG">
                     <span>*</span> Number of guests
                     <select
                         className="selectdiv"
+                        id="NoG"
                         value={reservationFormData["Number of guests"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Number of guests": e.target.value})}
                     >
                         <option>1</option>
-                        <option selected>2</option>
+                        <option>2</option>
                         <option>3</option>
                         <option>4</option>
                         <option>5</option>
@@ -74,14 +113,16 @@ export default function ReservationFormStep1() {
                         <img src="./Form-Image-Content/Dropdown-Chevron.svg"/>
                     </div>
                 </label>
-                <label>
+
+                <label for="Occation">
                     <span>*</span> Occation
                     <select
                         className="selectdiv"
+                        id="Occation"
                         value={reservationFormData["Occation"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Occation" : e.target.value})}
                     >
-                        <option value="Dinner" selected>Ordinary dinner at Little Lemon</option>
+                        <option value="Dinner">Ordinary dinner at Little Lemon</option>
                         <option value="birthday">Birthday Celebration</option>
                         <option value="family">Family Gathering</option>
                         <option value="business">Business Meeting</option>
@@ -95,9 +136,11 @@ export default function ReservationFormStep1() {
                         <img src="./Form-Image-Content/Dropdown-Chevron.svg"/>
                     </div>
                 </label>
-                <label>
+
+                <label for="Comment">
                     {"Comment (Optional)"}
                     <input
+                        id="Comment"
                         placeholder="Add a specific request"
                         value={reservationFormData["Comment"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Comment" : e.target.value})}
