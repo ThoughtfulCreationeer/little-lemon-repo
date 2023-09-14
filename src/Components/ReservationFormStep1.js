@@ -56,6 +56,30 @@ export default function ReservationFormStep1() {
 
             <div id="Reservation-Inputfields-Container">
 
+                <label for="NoG">
+                    <span>*</span> Number of guests
+                    <select
+                        className="selectdiv"
+                        id="NoG"
+                        value={reservationFormData["Number of guests"]}
+                        onChange={(e) => setReservationFormData({...reservationFormData, "Number of guests": e.target.value})}
+                    >
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option value="More than 10" >10 or more - Pleace specify how many and your occation in the comment field</option>
+                    </select>
+                    <div className="Select-Icon-Contaier">
+                        <img src="./Form-Image-Content/Dropdown-Chevron.svg"/>
+                    </div>
+                </label>
+
                 {/* Note that the for attribute helps associate the label with the input/selector by having the same name as the id attribute */}
                 <label for="Date">
                     <span>*</span> Date
@@ -90,30 +114,6 @@ export default function ReservationFormStep1() {
                     </div>
                 </label>
 
-                <label for="NoG">
-                    <span>*</span> Number of guests
-                    <select
-                        className="selectdiv"
-                        id="NoG"
-                        value={reservationFormData["Number of guests"]}
-                        onChange={(e) => setReservationFormData({...reservationFormData, "Number of guests": e.target.value})}
-                    >
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option value="More than 10" >10 or more - Pleace specify how many and your occation in the comment field</option>
-                    </select>
-                    <div className="Select-Icon-Contaier">
-                        <img src="./Form-Image-Content/Dropdown-Chevron.svg"/>
-                    </div>
-                </label>
-
                 <label for="Occation">
                     <span>*</span> Occation
                     <select
@@ -122,7 +122,7 @@ export default function ReservationFormStep1() {
                         value={reservationFormData["Occation"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Occation" : e.target.value})}
                     >
-                        <option value="Dinner">Ordinary dinner at Little Lemon</option>
+                        <option value="Dinner">Dinner at Little Lemon</option>
                         <option value="birthday">Birthday Celebration</option>
                         <option value="family">Family Gathering</option>
                         <option value="business">Business Meeting</option>
