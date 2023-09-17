@@ -7,9 +7,9 @@ const seededRandom = function (seed) {
     };
   };
   
-export const fetchAPI = function (date) {
+export const fetchAPI = function (dateObj) {
     let result = [];
-    let random = seededRandom(date.getDate());
+    let random = seededRandom(dateObj.getDate());
 
     for (let i = 17; i <= 23; i++) {
         if (random() < 0.5) {
