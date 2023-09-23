@@ -17,9 +17,25 @@ export default function ReservationFormStep1() {
         
         // Convert the date object to the format YYYY-MM-DD.
         return today.toISOString().split('T')[0];
-
     }
     
+    const [isNextButton1Disabled, setIsNextButton1Disabled] = useState(true);
+
+    function checkIfNextButton1ShouldBeDisabled() {
+        if (reservationFormData["Number of guests"] !== "<Select number of guests>" &&
+            reservationFormData["Date"] !== "<Select date>" &&
+            reservationFormData["Arrival time"] !== "<Select arrival time>" &&
+            reservationFormData["Occation"] !== "<Select occation>"
+        ) {
+            setIsNextButton1Disabled(false);
+        } else {
+            setIsNextButton1Disabled(true);
+        }
+    };
+
+    useEffect(() => {
+        checkIfNextButton1ShouldBeDisabled();
+    }, [reservationFormData]);
 
     useEffect(() => {
         async function fetchAvailableTimes() {
@@ -64,6 +80,7 @@ export default function ReservationFormStep1() {
                         value={reservationFormData["Number of guests"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Number of guests": e.target.value})}
                     >
+                        <option> &lt;Select number of guests&gt; </option>
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -73,7 +90,7 @@ export default function ReservationFormStep1() {
                         <option>7</option>
                         <option>8</option>
                         <option>9</option>
-                        <option value="More than 10" >10 or more - Pleace specify how many and your occation in the comment field</option>
+                        <option value="More than 10" >10 or more? - Pleace specify how many and your occation in the comment field</option>
                     </select>
                     <div className="Select-Icon-Contaier">
                         <img src="./Form-Image-Content/Dropdown-Chevron.svg"/>
@@ -89,6 +106,7 @@ export default function ReservationFormStep1() {
                         value={reservationFormData["Date"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Date" : e.target.value})}
                     >
+                        <option> &lt;Select date&gt; </option>
                         <option>Today</option>
                         <option>Tomorrow</option>
                     </select>
@@ -105,6 +123,7 @@ export default function ReservationFormStep1() {
                         value={reservationFormData["Arrival time"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Arrival time" : e.target.value})}
                         >
+                            <option> &lt;Select arrival time&gt; </option>
                             {availableTimes.map((time) => (
                                 <option key={time} value={time}> {time} </option>
                             ))}
@@ -122,6 +141,7 @@ export default function ReservationFormStep1() {
                         value={reservationFormData["Occation"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Occation" : e.target.value})}
                     >
+                        <option> &lt;Select occation&gt; </option>
                         <option value="Dinner">Dinner at Little Lemon</option>
                         <option value="birthday">Birthday Celebration</option>
                         <option value="family">Family Gathering</option>
@@ -150,7 +170,7 @@ export default function ReservationFormStep1() {
 
             <div id="Reservation-Form-Buttons-Container">
                 <span></span>
-                <button className="Next" id='Yellow-Button' onClick={() => setStep(2)}> Next </button>
+                <button disabled={isNextButton1Disabled} className="Next" id='Yellow-Button' onClick={() => setStep(2)}> Next </button>
             </div>
         </form>
     );

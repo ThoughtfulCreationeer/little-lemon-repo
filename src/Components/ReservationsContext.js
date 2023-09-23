@@ -5,10 +5,10 @@ export const multiStepContext = createContext();
     const ReservationsContext = () => {
         const [step, setStep] = useState(1);
         const [reservationFormData, setReservationFormData] = useState({
-            "Date": "Today",
-            "Arrival time": "18:00",
-            "Number of guests": 2,
-            "Occation": "Ordinary dinner at Little Lemon"
+            "Date": "<Select date>",
+            "Arrival time": "<Select arrival time>",
+            "Number of guests": "<Select number of guests>",
+            "Occation": "<Select occation>"
         });
         const [finalData, setFinalData] = useState([]);
 
@@ -20,10 +20,10 @@ export const multiStepContext = createContext();
         function startOver() {
             setFinalData("");
             setReservationFormData({
-                "Date": "Today",
-                "Arrival time": "18:00",
-                "Number of guests": 2,
-                "Occation": "Ordinary dinner at Little Lemon"
+                "Date": "<Select date>",
+                "Arrival time": "<Select arrival time>",
+                "Number of guests": "<Select number of guests>",
+                "Occation": "<Select occation>"
             });
             setStep(1);
         }
