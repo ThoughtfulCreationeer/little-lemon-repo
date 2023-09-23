@@ -5,6 +5,7 @@ import '../styles.scss';
 
 export default function ReservationFormStep3() {
     const { setStep, reservationFormData, setReservationFormData, submitData } = useContext(multiStepContext);
+    
     const isChecked = (value) => value === true;
     
     // 1. Approch to finding making a confirmation pop-up window: https://medium.com/@dimterion/modals-with-html-dialog-element-in-javascript-and-react-fb23c885d62e
@@ -25,6 +26,31 @@ export default function ReservationFormStep3() {
     //         ref.current.close();
     //     }
     // }, [ref, show]);
+
+    const [isNextButton3Disabled, setIsNextButton3Disabled] = useState(true);
+    
+    function isFieldEmpty(field) {
+        return field.trim() === "";
+    };
+
+    useEffect(() => {
+        checkIfNextButton3ShouldBeDisabled();
+    } , [reservationFormData]);
+
+    function checkIfNextButton3ShouldBeDisabled() {
+        if (reservationFormData &&
+            reservationFormData['First name'] &&
+            reservationFormData['Last name'] &&
+            reservationFormData['Phone number'] &&
+            !isFieldEmpty(reservationFormData["First name"]) &&
+            !isFieldEmpty(reservationFormData["Last name"]) &&
+            !isFieldEmpty(reservationFormData["Phone number"])
+        ) {
+            setIsNextButton3Disabled(false);
+        } else {
+            setIsNextButton3Disabled(true);
+        }
+    };
 
     return(
         <form id="Reservations-Form">
@@ -109,7 +135,7 @@ export default function ReservationFormStep3() {
 
             <div id="Reservation-Form-Buttons-Container">
                 <button id='White-Button' onClick={() => setStep(2)}> Previous </button>
-                <button id='Yellow-Button' onClick={submitData}> Finalize Booking </button>
+                <button disabled={isNextButton3Disabled} id='Yellow-Button' onClick={submitData}> Finalize Booking </button>
                 
 
                 {/* Open componenten ReservationFromConfirmation */}

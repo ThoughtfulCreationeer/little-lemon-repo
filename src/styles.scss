@@ -192,6 +192,13 @@ nav {
     color: $LittleLemonYellow;
 }
 
+#Yellow-Button:disabled{
+    background-color: #ccc;
+    color: #555555;
+    border: 2px solid #ccc;
+    cursor: not-allowed;
+}
+
 #White-Button {
     background-color: $HighlightWhite;
     color: $HighlightBlack;

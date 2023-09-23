@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect, useState} from "react"
 import { multiStepContext } from "./ReservationsContext";
 import ReservationForm from "./ReservationForm";
 import '../styles.scss';
@@ -7,6 +7,20 @@ export default function ReservationFormStep2() {
     const { setStep, reservationFormData, setReservationFormData } = useContext(multiStepContext);
 
     const isChecked = (value) => value === reservationFormData["Seating"];
+
+    const [isNextButton2Disabled, setIsNextButton2Disabled] = useState(true);
+
+    useEffect(() => {
+        checkIfNextButton2ShouldBeDisabled();
+    }, [reservationFormData]);
+
+    function checkIfNextButton2ShouldBeDisabled() {
+        if (isChecked("The Terrace") || isChecked("The Lounge") || isChecked("Waiters Choice")) {
+            setIsNextButton2Disabled(false);
+        } else {
+            setIsNextButton2Disabled(true);
+        }
+    };
 
     return(
         <form id="Reservations-Form">
@@ -73,7 +87,7 @@ export default function ReservationFormStep2() {
 
             <div id="Reservation-Form-Buttons-Container">
                 <button id='White-Button' onClick={() => setStep(1)}> Previous </button>
-                <button id='Yellow-Button' onClick={() => setStep(3)}> Next </button>
+                <button id='Yellow-Button' disabled={isNextButton2Disabled} onClick={() => setStep(3)}> Next </button>
             </div>
         </form>
     );
