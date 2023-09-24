@@ -27,31 +27,62 @@ export default function ReservationFormStep3() {
     //     }
     // }, [ref, show]);
 
-    const [isNextButton3Disabled, setIsNextButton3Disabled] = useState(true);
-    
+    // function for checking if a field is empty
     function isFieldEmpty(field) {
         return field.trim() === "";
     };
 
-    useEffect(() => {
-        checkIfNextButton3ShouldBeDisabled();
-    } , [reservationFormData]);
+    // Disable the "Next" button if the user has not filled out the required fields.
+    const [isNextButton3Disabled, setIsNextButton3Disabled] = useState(true);
 
     function checkIfNextButton3ShouldBeDisabled() {
-        if (reservationFormData &&
-            reservationFormData['First name'] &&
-            reservationFormData['Last name'] &&
-            reservationFormData['Phone number'] &&
-            !isFieldEmpty(reservationFormData["First name"]) &&
+        if (!isFieldEmpty(reservationFormData["First name"]) &&
             !isFieldEmpty(reservationFormData["Last name"]) &&
             !isFieldEmpty(reservationFormData["Phone number"])
-        ) {
-            setIsNextButton3Disabled(false);
-        } else {
-            setIsNextButton3Disabled(true);
-        }
-    };
+            ) {
+                setIsNextButton3Disabled(false);
+            } else {
+                setIsNextButton3Disabled(true);
+            }
+        };
 
+        useEffect(() => {
+            checkIfNextButton3ShouldBeDisabled();
+        } , [reservationFormData]);
+
+
+        // Feedback on faulty change of input fields
+    const [firstNameError, setFirstNameError] = useState(false);
+
+    function checkOnBlurFirstNameError() {
+        if (isFieldEmpty(reservationFormData["First name"])) {
+            setFirstNameError(true);
+        } else {
+            setFirstNameError(false);
+        }
+    }
+
+    const [lastNameError, setLastNameError] = useState(false);
+
+    function checkOnBlurLastNameError() {
+        if (isFieldEmpty(reservationFormData["Last name"])) {
+            setLastNameError(true);
+        } else {
+            setLastNameError(false);
+        }
+    }
+
+    const [phoneNumberError, setPhoneNumberError] = useState(false);
+
+    function checkOnBlurPhoneNumberError() {
+        if (isFieldEmpty(reservationFormData["Phone number"])) {
+            setPhoneNumberError(true);
+        } else {
+            setPhoneNumberError(false);
+        }
+    }
+
+    // Rendering to screen
     return(
         <form id="Reservations-Form">
             <div id="Reservations-Step-Header">
@@ -66,34 +97,43 @@ export default function ReservationFormStep3() {
             </div>
 
             <div id="Reservation-Inputfields-Container">
-                <label for="FN">
+                <label htmlFor="FN">
                     <span>*</span> First Name
                     <input
+                        className={`input ${firstNameError ? 'error-input' : ''}`}
                         id="FN"
                         placeholder="Write your first name here"
                         value={reservationFormData['First name']}
-                        onChange={(e) => setReservationFormData({...reservationFormData, 'First name' : e.target.value})}>
+                        onChange={(e) => setReservationFormData({...reservationFormData, 'First name' : e.target.value})}
+                        onBlur={checkOnBlurFirstNameError}
+                    >
                     </input>
                 </label>
-                <label for="LN">
+                <label htmlFor="LN">
                     <span>*</span> Last Name
                     <input
+                        className={`input ${lastNameError ? 'error-input' : ''}`}
                         id="LN"
                         placeholder="Write your last name here"
-                        value={reservationFormData['LastName']}
-                        onChange={(e) => setReservationFormData({...reservationFormData, 'Last name' : e.target.value})}>
+                        value={reservationFormData['Last name']}
+                        onChange={(e) => setReservationFormData({...reservationFormData, 'Last name' : e.target.value})}
+                        onBlur={checkOnBlurLastNameError}
+                    >
                     </input>
                 </label>
-                <label for="PN">
+                <label htmlFor="PN">
                     <span>*</span> Phone Number
                     <input
+                        className={`input ${phoneNumberError ? 'error-input' : ''}`}
                         id="PN"
                         placeholder="Write your phone number here"
-                        value={reservationFormData['PhoneNumber']}
-                        onChange={(e) => setReservationFormData({...reservationFormData, 'Phone number' : e.target.value})}>
+                        value={reservationFormData['Phone number']}
+                        onChange={(e) => setReservationFormData({...reservationFormData, 'Phone number' : e.target.value})}
+                        onBlur={checkOnBlurPhoneNumberError}
+                    >
                     </input>
                 </label>
-                <label for="Email">
+                <label htmlFor="Email">
                     {"Email (Optional)"}
                     <input
                         id="Email"
@@ -103,7 +143,7 @@ export default function ReservationFormStep3() {
                         onChange={(e) => setReservationFormData({...reservationFormData, 'Email' : e.target.value})}>
                     </input>
                 </label>
-                <label for="checkbox" className="checkbox">
+                <label htmlFor="checkbox" className="checkbox">
                     <input
                         type="checkbox"
                         id="checkbox"
@@ -114,7 +154,7 @@ export default function ReservationFormStep3() {
                     <span className="custom-checkbox"></span>
                     I would like to receive the receipt on email after my dinner
                 </label>
-                <label for="checkbox" className="checkbox">
+                <label htmlFor="checkbox" className="checkbox">
                     <input
                         type="checkbox"
                         id="checkbox"

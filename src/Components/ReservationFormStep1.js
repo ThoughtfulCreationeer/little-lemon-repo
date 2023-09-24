@@ -19,6 +19,49 @@ export default function ReservationFormStep1() {
         return today.toISOString().split('T')[0];
     }
     
+    // Validation/feedback on proper change of input fields
+    const [numberOfGuestsError, setNumberOfGuestsError] = useState(false);
+
+    function checkOnBlurNumberOfGuestsError() {
+        if (reservationFormData["Number of guests"] === "<Select number of guests>") {
+            setNumberOfGuestsError(true);
+        } else {
+            setNumberOfGuestsError(false);
+        }
+    };
+
+    const [dateError, setDateError] = useState(false);
+
+    function checkOnBlurDateError() {
+        if (reservationFormData["Date"] === "<Select date>") {
+            setDateError(true);
+        } else {
+            setDateError(false);
+        }
+    };
+
+    const [arrivalTimeError, setArrivalTimeError] = useState(false);
+
+    function checkOnBlurArrivalTimeError() {
+        if (reservationFormData["Arrival time"] === "<Select arrival time>") {
+            setArrivalTimeError(true);
+        } else {
+            setArrivalTimeError(false);
+        }
+    };
+
+    const [occationError, setOccationError] = useState(false);
+
+    function checkOnBlurOccationError() {
+        if (reservationFormData["Occation"] === "<Select occation>") {
+            setOccationError(true);
+        } else {
+            setOccationError(false);
+        }
+    };
+
+
+    // Allowance for continuing to next step
     const [isNextButton1Disabled, setIsNextButton1Disabled] = useState(true);
 
     function checkIfNextButton1ShouldBeDisabled() {
@@ -72,13 +115,14 @@ export default function ReservationFormStep1() {
 
             <div id="Reservation-Inputfields-Container">
 
-                <label for="NoG">
+                <label htmlFor="NoG">
                     <span>*</span> Number of guests
                     <select
-                        className="selectdiv"
+                        className={`selectdiv ${numberOfGuestsError ? 'error-input' : ''}`}
                         id="NoG"
                         value={reservationFormData["Number of guests"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Number of guests": e.target.value})}
+                        onBlur={checkOnBlurNumberOfGuestsError}
                     >
                         <option> &lt;Select number of guests&gt; </option>
                         <option>1</option>
@@ -101,10 +145,11 @@ export default function ReservationFormStep1() {
                 <label for="Date">
                     <span>*</span> Date
                     <select
-                        className="selectdiv"
+                        className={`selectdiv ${dateError ? 'error-input' : ''}`}
                         id="Date"
                         value={reservationFormData["Date"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Date" : e.target.value})}
+                        onBlur={checkOnBlurDateError}
                     >
                         <option> &lt;Select date&gt; </option>
                         <option>Today</option>
@@ -118,10 +163,11 @@ export default function ReservationFormStep1() {
                 <label for="Arival time">
                     <span>*</span> Arrival Time
                     <select
-                        className="selectdiv"
+                        className={`selectdiv ${arrivalTimeError ? 'error-input' : ''}`}
                         id="Arival time"
                         value={reservationFormData["Arrival time"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Arrival time" : e.target.value})}
+                        onBlur={checkOnBlurArrivalTimeError}
                         >
                             <option> &lt;Select arrival time&gt; </option>
                             {availableTimes.map((time) => (
@@ -136,10 +182,11 @@ export default function ReservationFormStep1() {
                 <label for="Occation">
                     <span>*</span> Occation
                     <select
-                        className="selectdiv"
+                        className={`selectdiv ${occationError ? 'error-input' : ''}`}
                         id="Occation"
                         value={reservationFormData["Occation"]}
                         onChange={(e) => setReservationFormData({...reservationFormData, "Occation" : e.target.value})}
+                        onBlur={checkOnBlurOccationError}
                     >
                         <option> &lt;Select occation&gt; </option>
                         <option value="Dinner">Dinner at Little Lemon</option>

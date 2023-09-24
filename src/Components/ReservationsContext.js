@@ -8,7 +8,10 @@ export const multiStepContext = createContext();
             "Date": "<Select date>",
             "Arrival time": "<Select arrival time>",
             "Number of guests": "<Select number of guests>",
-            "Occation": "<Select occation>"
+            "Occation": "<Select occation>",
+            "First name": "",
+            "Last name": "",
+            "Phone number": ""
         });
         const [finalData, setFinalData] = useState([]);
 
@@ -23,7 +26,10 @@ export const multiStepContext = createContext();
                 "Date": "<Select date>",
                 "Arrival time": "<Select arrival time>",
                 "Number of guests": "<Select number of guests>",
-                "Occation": "<Select occation>"
+                "Occation": "<Select occation>",
+                "First name": "",
+                "Last name": "",
+                "Phone number": ""
             });
             setStep(1);
         }
