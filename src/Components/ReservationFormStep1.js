@@ -18,6 +18,7 @@ export default function ReservationFormStep1() {
         // Convert the date object to the format YYYY-MM-DD.
         return today.toISOString().split('T')[0];
     }
+
     
     // Validation/feedback on proper change of input fields
     const [numberOfGuestsError, setNumberOfGuestsError] = useState(false);

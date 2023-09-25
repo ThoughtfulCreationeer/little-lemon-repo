@@ -1,13 +1,17 @@
 import React, {useState, useContext, useRef, useEffect} from "react"
 import { multiStepContext } from "./ReservationsContext";
-// import Modal from "./ReservationFormFinalSubmitionModal";
+import Modal from "./ReservationFormFinalSubmitionModal";
 import '../styles.scss';
 
 export default function ReservationFormStep3() {
     const { setStep, reservationFormData, setReservationFormData, submitData } = useContext(multiStepContext);
-    
-    const isChecked = (value) => value === true;
-    
+
+    const [SMSReceipt, setSMSReceipt] = useState(false);
+    const [Newsletter, setNewsletter] = useState(false);
+
+
+    // const isChecked = (value) => value === true;
+
     // 1. Approch to finding making a confirmation pop-up window: https://medium.com/@dimterion/modals-with-html-dialog-element-in-javascript-and-react-fb23c885d62e
     // const [modal, setModal] = useState(false);
 
@@ -140,29 +144,44 @@ export default function ReservationFormStep3() {
                         type="email"
                         placeholder="Add a specific request"
                         value={reservationFormData['Email']}
-                        onChange={(e) => setReservationFormData({...reservationFormData, 'Email' : e.target.value})}>
+                        onChange={(e) => setReservationFormData({...reservationFormData, 'Email' : e.target.value})}
+                    >
                     </input>
                 </label>
-                <label htmlFor="checkbox" className="checkbox">
+                <label htmlFor="Checkbox SMS" className="checkbox-wrapper">
                     <input
                         type="checkbox"
-                        id="checkbox"
-                        value={true}
-                        onChange={(e) => setReservationFormData({...reservationFormData, 'Agreeing sms-receipt' : e.target.value})}
-                        checked={isChecked(reservationFormData['Agreeing sms-receipt'])}
+                        id="checkbox SMS"
+                        value={!SMSReceipt}
+                        onChange={(e) => {
+                            setReservationFormData({
+                                ...reservationFormData,
+                                'Agreeing sms-receipt' : e.target.value,
+                            });
+                            setSMSReceipt(!SMSReceipt);
+                        }}
+                        checked={SMSReceipt}
+                        // checked={isChecked(reservationFormData['Agreeing sms-receipt'])}
                     />
-                    <span className="custom-checkbox"></span>
+                    {/* <span className="custom-checkbox"></span> */}
                     I would like to receive the receipt on email after my dinner
                 </label>
-                <label htmlFor="checkbox" className="checkbox">
+                <label htmlFor="checkbox" className="checkbox-wrapper">
                     <input
                         type="checkbox"
-                        id="checkbox"
-                        value={true}
-                        onChange={(e) => setReservationFormData({...reservationFormData, 'Agreeing newsletter' : e.target.value})}
-                        checked={isChecked(reservationFormData['Agreeing newsletter'])}
+                        id="checkbox SMS"
+                        value={!Newsletter}
+                        onChange={(e) =>  {
+                            setReservationFormData({
+                                ...reservationFormData,
+                                'Agreeing newsletter' : e.target.value,
+                            });
+                            setNewsletter(!Newsletter);
+                        }}
+                        checked={Newsletter}
+                        // checked={isChecked(reservationFormData['Agreeing newsletter'])}
                     />
-                    <span className="custom-checkbox"></span>
+                    {/* <span className="custom-checkbox"></span> */}
                     I would like to receive the email newsletter
                 </label>
                 <div className="TCE">
@@ -188,19 +207,20 @@ export default function ReservationFormStep3() {
             
             {/* <dialog
                 ref={ref}
-                onClick={(e) => {
-                const dialogDimensions = ref.current.getBoundingClientRect();
-                if (
-                    e.clientX < dialogDimensions.left ||
-                    e.clientX > dialogDimensions.right ||
-                    e.clientY < dialogDimensions.top ||
-                    e.clientY > dialogDimensions.bottom
-                ) {
-                    ref.current.close();
-                }
-                }}
+                // onClick={(e) => {
+                // const dialogDimensions = ref.current.getBoundingClientRect();
+                // if (
+                //     e.clientX < dialogDimensions.left ||
+                //     e.clientX > dialogDimensions.right ||
+                //     e.clientY < dialogDimensions.top ||
+                //     e.clientY > dialogDimensions.bottom
+                // ) {
+                //     ref.current.close();
+                // }
+                // }}
             >
                 <h1>Test</h1>
+                <button onClick={() => ref.current.close()}>Close</button>
             </dialog> */}
         </form>
     );

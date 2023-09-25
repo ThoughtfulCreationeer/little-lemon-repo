@@ -659,68 +659,73 @@ footer {
 
 // ### checkboxes ### // This is a mess that needs to be cleaned because of repeatability
 
-#Reservation-Inputfields-Container .checkbox{
+#Reservations-Form #Reservation-Inputfields-Container .checkbox-wrapper{
     display: flex;
     align-items: center;
     gap: 8px;
+    font-size: 14px;
 
-    #checkbox{
+    input[type="checkbox"]{
+        appearance: none;
+        -webkit-appearance: none;
         width: 28px;
         height: 28px;
         margin: 0;
-    }
-
-    .custom-checkbox{
-        position: absolute;
-        background-color: $LittleLemonGreen;
-        border: 2px solid white;
+        padding: 0;
         border-radius: 4px;
-        width: 24px;
-        height: 24px;
-        margin: 0;
         cursor: pointer;
+        display: flex;
+        outline: none;
+        align-items: center;
+        justify-content: center;
     }
 
-    .custom-checkbox:hover{
+    input[type="checkbox"]:after {
+        font-family: "Font Awesome 6 Free";
+        content: "\f00c";
+        font-weight: 900;
+        font-size: 20px;
+        color: $HighlightWhite;
+        display: none;
+      }
+
+    input[type="checkbox"]:hover{
         background-color: #CCCCCC;
     }
 
-    #checkbox:checked ~ .custom-checkbox{
-        background-color: transparent;
-    }
+    input[type="checkbox"]:checked:after {
+        display: block;
+      }
+
+    // .custom-checkbox{
+    //     position: absolute;
+    //     background-color: $LittleLemonGreen;
+    //     border: 2px solid white;
+    //     border-radius: 4px;
+    //     width: 24px;
+    //     height: 24px;
+    //     margin: 0;
+    //     cursor: pointer;
+    // }
+
+    // .custom-checkbox:hover{
+    //     background-color: #CCCCCC;
+    // }
 }
 
-.checkbox{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    #checkbox{
-        width: 28px;
-        height: 28px;
-        margin: 0;
-    }
-
-    .custom-checkbox{
-        position: absolute;
-        background-color: $LittleLemonGreen;
-        border: 2px solid white;
-        border-radius: 4px;
-        width: 24px;
-        height: 24px;
-        margin: 0;
-        cursor: pointer;
-    }
-
-    .custom-checkbox:hover{
-        background-color: #CCCCCC;
-    }
-
-    #checkbox:checked ~ .custom-checkbox{
-        background-color: transparent;
-    }
-}
-
+// #Reservations-Form #Reservation-Inputfields-Container .checkbox-wrapper label:before{
+//     content: "";
+//     display: inline-block;
+//     width: 24px;
+//     height: 24px;
+//     background-image: url('/Form-Image-Content/ChosenCheckMark.png');
+//     background-size: contain; /* Make sure the image fits within the checkbox */
+//     background-repeat: no-repeat; /* Prevent the image from repeating */
+//     background-position: center; /* Center the image within the checkbox */
+//     position: absolute;
+//     top: 0;
+//     left: 0;
+// }
 
 .TCE{
     display: flex;
