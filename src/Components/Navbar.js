@@ -1,21 +1,22 @@
 import React from "react"
 import '../styles.scss';
+import { Link } from 'react-router-dom'
 
 function Navbar (){
     return(
         <nav>
-            <a href="/">
+            <Link to="/">
                 <img src="/logo-n-text.png" alt="Little Lomon's logo"/>
-            </a>
+            </Link>
             <ul>
                 <li>
-                    <a href='/Menu'>Menu</a>
+                    <Link to='/Menu'>Menu</Link>
                 </li>
                 <li>
-                    <a href='/Reservations'>Reservations</a>
+                    <Link to='/Reservations'>Reservations</Link>
                 </li>
                 <li>
-                    <a href='/About'>About</a>
+                    <Link to='/About'>About</Link>
                 </li>
             </ul>
         </nav>

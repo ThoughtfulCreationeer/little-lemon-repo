@@ -3,6 +3,7 @@ import Navbar from '../Components/Navbar';
 import SpecialsSection from '../Components/SpecialsSection';
 import Testimonials from '../Components/Testimonials'
 import Footer from '../Components/Footer';
+import { Link } from 'react-router-dom';
 
 function Home() {
   return (
@@ -17,7 +18,9 @@ function Home() {
                 <h2> Chicago </h2>
               </div>
               <p>Step into our vibrant haven, where the aroma of olive oil and the gentle murmur of our welcoming team brings the warmth of Mediterranean sunshine straight to your table. Little Lemon is more than just a Greek restaurant, it's a celebration of Greece's rich culinary heritage wrapped in a zestful embrace. </p>
-              <button id='Yellow-Button'> Reserve a table </button>
+              <Link to='/Reservations'>
+                <button id='Yellow-Button' > Reserve a table </button>
+              </Link>
             </div>
             <div className='image-container'>
               <img src="/restaurant-chef-B.jpg" alt=" One of our chefs finalizing a mean"/>
@@ -29,7 +32,9 @@ function Home() {
         <section className="specials-section">
           <h2>Specials</h2>
           <SpecialsSection />
-          <button>See full menu</button>
+          <Link to='/Menu'>
+            <button>See full menu</button>
+          </Link>
         </section>
         <section className="testimonials-section">
             <h2>Testimonials</h2>
@@ -44,7 +49,9 @@ function Home() {
             </div>
             <p>Where food is a celebration, stories are shared, and everyone is family. Let us fill your plates with warmth, your glasses with cheer, and your heart with the true spirit of Greek hospitality. Here, every moment is a memory waiting to be savored.</p>
           </div>
-          <button id='Yellow-Button'> Reserve a table </button>
+          <Link to='/Reservations'>
+                <button id='Yellow-Button' > Reserve a table </button>
+          </Link>
         </section>
       </main>
       <Footer/>
