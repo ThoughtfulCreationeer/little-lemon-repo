@@ -658,77 +658,48 @@ footer {
         }
     }
 
-}
-
-// ### checkboxes ### // This is a mess that needs to be cleaned because of repeatability
-
-#Reservations-Form #Reservation-Inputfields-Container .checkbox-wrapper{
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 14px;
-
-    input[type="checkbox"]{
-        appearance: none;
-        -webkit-appearance: none;
-        width: 28px;
-        height: 28px;
-        margin: 0;
-        padding: 0;
-        border-radius: 4px;
-        cursor: pointer;
+    .checkbox-wrapper{
         display: flex;
-        outline: none;
         align-items: center;
-        justify-content: center;
+        gap: 8px;
+        font-size: 14px;
+
+        input[type="checkbox"]{
+            appearance: none;
+            -webkit-appearance: none;
+            width: 28px;
+            height: 28px;
+            margin: 0;
+            padding: 0;
+            border: 2px solid $HighlightWhite;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            outline: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        input[type="checkbox"]:after {
+            font-family: "Font Awesome 6 Free";
+            content: "\f00c";
+            font-weight: 900;
+            font-size: 20px;
+            color: $HighlightWhite;
+            display: none;
+          }
+    
+        input[type="checkbox"]:hover{
+            background-color: #CCCCCC;
+        }
+    
+        input[type="checkbox"]:checked:after {
+            display: block;
+        }
     }
+    
 
-    input[type="checkbox"]:after {
-        font-family: "Font Awesome 6 Free";
-        content: "\f00c";
-        font-weight: 900;
-        font-size: 20px;
-        color: $HighlightWhite;
-        display: none;
-      }
-
-    input[type="checkbox"]:hover{
-        background-color: #CCCCCC;
-    }
-
-    input[type="checkbox"]:checked:after {
-        display: block;
-      }
-
-    // .custom-checkbox{
-    //     position: absolute;
-    //     background-color: $LittleLemonGreen;
-    //     border: 2px solid white;
-    //     border-radius: 4px;
-    //     width: 24px;
-    //     height: 24px;
-    //     margin: 0;
-    //     cursor: pointer;
-    // }
-
-    // .custom-checkbox:hover{
-    //     background-color: #CCCCCC;
-    // }
 }
-
-// #Reservations-Form #Reservation-Inputfields-Container .checkbox-wrapper label:before{
-//     content: "";
-//     display: inline-block;
-//     width: 24px;
-//     height: 24px;
-//     background-image: url('/Form-Image-Content/ChosenCheckMark.png');
-//     background-size: contain; /* Make sure the image fits within the checkbox */
-//     background-repeat: no-repeat; /* Prevent the image from repeating */
-//     background-position: center; /* Center the image within the checkbox */
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-// }
 
 .TCE{
     display: flex;
@@ -749,10 +720,15 @@ footer {
             padding: 0;
             font-size: 12px;
             text-decoration: underline;
+            font-weight: 550;
         }
 
         a:hover{
             cursor: pointer;
+        }
+
+        a:visited{
+            color: white;
         }
     }
     .error-message{
@@ -769,6 +745,7 @@ footer {
         grid-gap: 48px;
     }
 }
+
 
 
 // ##########  About  ########## //
@@ -931,18 +908,6 @@ footer {
                     h4{
                         margin: 0;
                     }
-                    // input[type="radio"] {
-                    //     appearance: none;
-                    //     -webkit-appearance: none;
-                    //     -moz-appearance: none;
-                    //     width: 0;
-                    //     height: 0;
-                    //     margin: 0;
-                    //     padding: 0;
-                    //     border: none;
-                    //     position: absolute;
-                    //     pointer-events: none;
-                    //   }
                 }
             }
 
@@ -1034,6 +999,46 @@ footer {
     }
 }
 
+#Reservations-Form #Reservation-Inputfields-Container .checkbox-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+
+    input[type="checkbox"]{
+        appearance: none;
+        -webkit-appearance: none;
+        width: 28px;
+        height: 28px;
+        margin: 0;
+        padding: 0;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        outline: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+    input[type="checkbox"]:after {
+        font-family: "Font Awesome 6 Free";
+        content: "\f00c";
+        font-weight: 900;
+        font-size: 20px;
+        color: $HighlightWhite;
+        display: none;
+      }
+
+    input[type="checkbox"]:hover{
+        background-color: #CCCCCC;
+    }
+
+    input[type="checkbox"]:checked:after {
+        display: block;
+    }
+}
+
+//Reservation Confirmation Page styling
 .Reservations-Confirmation-Page{
     display: flex;
     flex-direction: column;
@@ -1070,14 +1075,14 @@ footer {
             flex-wrap: wrap;
             width: 100%;
             justify-content: space-between;
-            
+
             p{
                 margin: 8px 16px;
             }
         }
 
         .Booking-Comment-Container{
-            width: fill;
+            width: stretch;
             border: $HighlightWhite 2px solid;
             border-radius: 16px;
             margin: 0 16px 16px 16px;
@@ -1117,8 +1122,7 @@ footer {
     }
 }
 
-// @media (min-width: $LowerGeneralPageMinColumnRequirement) {
-// }
+// @media (min-width: $LowerGeneralPageMinColumnRequirement)
 
 @media (min-width: $HigherGeneralPageMinColumnRequirement) {
     .Main-Reservations-Section {
